@@ -145,6 +145,82 @@ header.menu-open .burger{color:var(--blue)}
 .enq-hint{font-size:12.5px;color:var(--blue);margin-top:10px;font-weight:600;line-height:1.5}
 .ig{color:var(--blue);font-weight:700;text-decoration:underline;text-underline-offset:2px}
 
+/* ---- reach planner ---------------------------------------------------------
+   Geometry is real trigonometry. Capacity sizing is deliberately indicative
+   only — actual capacity at radius comes from the machine's load chart. */
+.plan{display:grid;grid-template-columns:1.15fr .85fr;border:2px solid var(--line);background:#fff}
+.plan-viz{border-right:2px solid var(--line);background:var(--bone);position:relative;
+  display:flex;align-items:center;justify-content:center;padding:16px}
+.plan-viz svg{display:block;width:100%;height:auto;max-height:540px}
+.plan-side{padding:30px 28px;display:flex;flex-direction:column}
+.plan-ctl{margin-bottom:22px}
+.plan-ctl .row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:8px}
+.plan-ctl label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.plan-ctl .val{font-family:var(--fd);font-size:21px;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+.plan-ctl .val i{font-style:normal;font-size:.6em;color:var(--slate);margin-left:2px}
+.plan-ctl input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;
+  background:var(--hair);outline:0;margin:0;cursor:pointer}
+.plan-ctl input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;
+  background:var(--yellow);border:2px solid var(--line);cursor:pointer}
+.plan-ctl input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--yellow);
+  border:2px solid var(--line);border-radius:0;cursor:pointer}
+.plan-ctl input[type=range]:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+.plan-out{border:2px solid var(--line);margin-top:auto}
+.plan-out .r{display:flex;justify-content:space-between;gap:14px;padding:11px 16px;
+  border-bottom:1px solid var(--hair);font-size:14px}
+.plan-out .r:last-child{border-bottom:0}
+.plan-out .r span:first-child{font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:700;align-self:center}
+.plan-out .r b{font-family:var(--fd);font-size:17px;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+.plan-class{background:var(--yellow);border:2px solid var(--line);border-top:0;padding:18px 16px}
+.plan-class .k{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(16,18,20,.7);margin-bottom:6px}
+.plan-class .v{font-family:var(--fd);font-size:clamp(26px,3vw,34px);font-weight:700;letter-spacing:-.04em;line-height:1}
+.plan-flag{margin-top:14px;font-size:12.5px;font-weight:600;line-height:1.5;color:var(--blue)}
+.plan-flag.warn{color:#9A5B00}
+.plan-cta{margin-top:18px;width:100%}
+.plan-note{margin-top:16px;font-size:12px;color:var(--muted);line-height:1.6}
+.plan-disc{margin-top:22px;border:2px solid var(--line);border-left:10px solid var(--yellow);
+  background:#fff;padding:18px 22px}
+.plan-disc b{display:block;font-family:var(--fd);font-size:15px;letter-spacing:-.02em;margin-bottom:6px}
+.plan-disc p{font-size:14px;color:var(--slate);line-height:1.6;max-width:92ch}
+@media(max-width:1080px){
+  .plan{grid-template-columns:1fr}
+  .plan-viz{border-right:0;border-bottom:2px solid var(--line)}
+}
+@media(max-width:720px){
+  .plan-side{padding:24px 20px}
+  .plan-viz{padding:12px}
+}
+
+/* ---- planner tabs + skylift selector ---------------------------------------
+   Same visual system as the crane planner. Skylift geometry is exact; machine
+   type and class are indicative only — real outreach comes from the spec sheet. */
+.plan-tabs{display:flex;margin-bottom:-2px;position:relative;z-index:1;flex-wrap:wrap}
+.plan-tab{appearance:none;-webkit-appearance:none;background:#fff;border:2px solid var(--line);
+  padding:13px 26px;font-family:var(--fd);font-size:15px;font-weight:700;letter-spacing:-.01em;
+  color:var(--muted);cursor:pointer;margin-right:-2px;line-height:1.2}
+.plan-tab.is-on{background:var(--yellow);color:var(--ink);border-bottom-color:var(--yellow)}
+.plan-tab:focus-visible{outline:3px solid var(--blue);outline-offset:3px;z-index:2;position:relative}
+.plan-seg{margin-bottom:22px;min-width:0}
+.plan-seg .k{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px}
+.plan-seg .g{display:flex;border:2px solid var(--line)}
+.plan-seg button{flex:1 1 0;min-width:0;appearance:none;-webkit-appearance:none;background:#fff;border:0;
+  border-right:2px solid var(--line);padding:9px 6px;font-family:var(--fb);font-size:12.5px;
+  font-weight:700;color:var(--muted);cursor:pointer;line-height:1.3;overflow-wrap:anywhere}
+.plan-seg button:last-child{border-right:0}
+.plan-seg button.is-on{background:var(--ink);color:#fff}
+.plan-seg button:focus-visible{outline:3px solid var(--blue);outline-offset:-3px}
+.plan-segs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.plan-class .sub{font-size:12.5px;font-weight:700;color:rgba(16,18,20,.72);margin-top:7px;
+  letter-spacing:.02em}
+.plan-flag + .plan-flag{margin-top:7px;color:var(--muted);font-weight:600}
+@media(max-width:720px){
+  .plan-tab{padding:11px 16px;font-size:14px;flex:1 1 auto}
+  .plan-segs{grid-template-columns:1fr}
+}
+
 /* ---- social icons (header + footer) ---- */
 .social{display:flex;align-items:center;gap:4px;flex:0 0 auto}
 .social a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;
@@ -343,11 +419,11 @@ section{padding:104px 0}
 .credbox .r span:first-child{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
 
 /* ---- cta ---- */
-.ctaband{background:var(--ink);color:#fff;padding:88px 0}
+.ctaband{background:var(--ink);color:#fff;padding:104px 0}
 .ctaband .wrap{display:flex;align-items:center;justify-content:space-between;gap:44px;flex-wrap:wrap}
 .ctaband p{color:#A8B0B8;max-width:44ch;margin-top:14px}
 
-footer{background:var(--paper);border-top:2px solid var(--line);color:var(--slate);font-size:15px;padding:70px 0 0}
+footer{background:var(--paper);border-top:2px solid var(--line);color:var(--slate);font-size:15px;padding:104px 0 0}
 .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:42px}
 .flogo{flex-direction:column;align-items:flex-start;gap:10px}
 .flogo .txt span{margin-top:0}
@@ -398,6 +474,8 @@ footer a:hover{color:var(--blue)}
   .fb.full{grid-column:span 1}
   .frow{grid-template-columns:1fr}
   .quote .side,.quote .form,.about .bd{padding:32px 24px}
+  .ctaband{padding:64px 0}
+  footer{padding-top:64px}
   .mbar{display:flex}
   .util .l span:nth-child(2){display:none}
   /* Translated button labels (esp. Tamil, Chinese) can be longer than the
@@ -545,10 +623,144 @@ footer a:hover{color:var(--blue)}
   </div>
 </section>
 
+<section id="planner">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="lbl" data-i18n="plan_lbl">03 / Planner</div>
+      <div>
+        <h2 data-i18n="plan_h2">Work out what you need</h2>
+        <p class="lead" id="plan-lead" data-i18n="plan_lead">Set your load, how far it has to reach, and how high it has to go. The diagram shows the boom length and angle that geometry demands, and points you at a likely crane class to ask us about.</p>
+      </div>
+    </div>
+
+    <div class="plan-tabs" role="tablist" aria-label="Planner type">
+      <button type="button" class="plan-tab is-on" id="tab-crane" role="tab" aria-selected="true"
+        aria-controls="panel-crane" data-i18n="sky_tab_crane">Mobile crane</button>
+      <button type="button" class="plan-tab" id="tab-sky" role="tab" aria-selected="false"
+        aria-controls="panel-sky" data-i18n="sky_tab_sky">Skylift</button>
+    </div>
+
+    <div id="panel-crane" role="tabpanel" aria-labelledby="tab-crane">
+    <div class="plan">
+      <div class="plan-viz">
+        <svg id="plan-svg" viewBox="0 0 620 556" role="img" aria-labelledby="plan-svg-title">
+          <title id="plan-svg-title" data-i18n="plan_svg_alt">Diagram of a mobile crane showing boom angle, working radius and hook height</title>
+          <g id="plan-g"></g>
+        </svg>
+      </div>
+
+      <div class="plan-side">
+        <div class="plan-ctl">
+          <div class="row"><label for="plan-load" data-i18n="plan_in_load">Load weight</label>
+            <span class="val"><span id="plan-load-v">8</span><i data-i18n="u_t">t</i></span></div>
+          <input id="plan-load" type="range" min="0.5" max="150" step="0.5" value="8">
+        </div>
+        <div class="plan-ctl">
+          <div class="row"><label for="plan-rad" data-i18n="plan_in_radius">Working radius</label>
+            <span class="val"><span id="plan-rad-v">18</span><i data-i18n="u_m">m</i></span></div>
+          <input id="plan-rad" type="range" min="3" max="40" step="0.5" value="18">
+        </div>
+        <div class="plan-ctl">
+          <div class="row"><label for="plan-hgt" data-i18n="plan_in_height">Hook height</label>
+            <span class="val"><span id="plan-hgt-v">16</span><i data-i18n="u_m">m</i></span></div>
+          <input id="plan-hgt" type="range" min="3" max="45" step="0.5" value="16">
+        </div>
+
+        <div class="plan-out">
+          <div class="r"><span data-i18n="plan_out_boom">Boom length needed</span><b id="plan-boom">—</b></div>
+          <div class="r"><span data-i18n="plan_out_angle">Boom angle</span><b id="plan-angle">—</b></div>
+          <div class="r"><span data-i18n="plan_out_moment">Load moment</span><b id="plan-moment">—</b></div>
+        </div>
+        <div class="plan-class">
+          <div class="k" data-i18n="plan_class_k">Likely starting point</div>
+          <div class="v" id="plan-class">—</div>
+        </div>
+
+        <p class="plan-flag" id="plan-flag"></p>
+        <button type="button" class="btn btn-fill plan-cta" id="plan-cta" data-i18n="plan_cta">Use these figures in an enquiry →</button>
+        <p class="plan-note" data-i18n="plan_note">Geometry assumes a boom pivot 1.5 m ahead of the slew centre at 2.2 m height, plus 1.5 m for hook block and slings.</p>
+      </div>
+    </div>
+
+    <div class="plan-disc">
+      <b data-i18n="plan_disc_t">A guide only — not a lift plan or engineering advice</b>
+      <p data-i18n="plan_disc_p">The boom length and angle shown are geometry only. Crane class is indicated from load moment as a starting point; a crane's actual capacity falls sharply as radius increases, and only the manufacturer's load chart for the specific machine is authoritative. <strong>Aerolift Machinery Sdn Bhd accepts no responsibility or liability for any decision made, or action taken, in reliance on this tool.</strong> Always confirm your requirements with our team before planning or booking a lift — <a href="#contact" style="color:var(--blue);font-weight:700;text-decoration:underline">speak to our experts</a> using the contact details below.</p>
+    </div>
+    </div>
+
+    <div id="panel-sky" role="tabpanel" aria-labelledby="tab-sky" hidden>
+    <div class="plan">
+      <div class="plan-viz">
+        <svg id="sky-svg" viewBox="0 0 620 556" role="img" aria-labelledby="sky-svg-title">
+          <title id="sky-svg-title" data-i18n="sky_svg_alt">Diagram of a skylift showing working height, platform height and horizontal outreach</title>
+          <g id="sky-g"></g>
+        </svg>
+      </div>
+
+      <div class="plan-side">
+        <div class="plan-ctl">
+          <div class="row"><label for="sky-hgt" data-i18n="sky_in_height">Working height</label>
+            <span class="val"><span id="sky-hgt-v">20</span><i data-i18n="u_m">m</i></span></div>
+          <input id="sky-hgt" type="range" min="3" max="55" step="0.5" value="20">
+        </div>
+        <div class="plan-ctl">
+          <div class="row"><label for="sky-reach" data-i18n="sky_in_reach">Horizontal outreach</label>
+            <span class="val"><span id="sky-reach-v">8</span><i data-i18n="u_m">m</i></span></div>
+          <input id="sky-reach" type="range" min="0" max="25" step="0.5" value="8">
+        </div>
+        <div class="plan-ctl">
+          <div class="row"><label for="sky-load" data-i18n="sky_in_load">Platform load</label>
+            <span class="val"><span id="sky-load-v">200</span><i data-i18n="u_kg">kg</i></span></div>
+          <input id="sky-load" type="range" min="80" max="500" step="10" value="200">
+        </div>
+
+        <div class="plan-segs">
+          <div class="plan-seg">
+            <div class="k" data-i18n="sky_env">Environment</div>
+            <div class="g" id="sky-env">
+              <button type="button" data-v="out" class="is-on" data-i18n="sky_env_out">Outdoor</button>
+              <button type="button" data-v="in" data-i18n="sky_env_in">Indoor</button>
+            </div>
+          </div>
+          <div class="plan-seg">
+            <div class="k" data-i18n="sky_acc">Site access</div>
+            <div class="g" id="sky-acc">
+              <button type="button" data-v="std" class="is-on" data-i18n="sky_acc_std">Standard</button>
+              <button type="button" data-v="narrow" data-i18n="sky_acc_narrow">Narrow / doorway</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="plan-out">
+          <div class="r"><span data-i18n="sky_out_platform">Platform floor height</span><b id="sky-plat">&#8212;</b></div>
+          <div class="r"><span data-i18n="sky_out_reach">Outreach</span><b id="sky-reach-o">&#8212;</b></div>
+          <div class="r"><span data-i18n="sky_out_boom">Minimum boom reach</span><b id="sky-boom">&#8212;</b></div>
+        </div>
+        <div class="plan-class">
+          <div class="k" data-i18n="sky_class_k">Likely machine</div>
+          <div class="v" id="sky-type">&#8212;</div>
+          <div class="sub" id="sky-cls">&#8212;</div>
+        </div>
+
+        <p class="plan-flag" id="sky-flag"></p>
+        <p class="plan-flag" id="sky-note2"></p>
+        <button type="button" class="btn btn-fill plan-cta" id="sky-cta" data-i18n="sky_cta">Use these figures in an enquiry &#8594;</button>
+        <p class="plan-note" data-i18n="sky_note">Working height is taken as platform floor height plus 2 m &#8212; the standard industry allowance for a person's reach.</p>
+      </div>
+    </div>
+
+    <div class="plan-disc">
+      <b data-i18n="sky_disc_t">A guide only &#8212; not a lift plan or engineering advice</b>
+      <p data-i18n="sky_disc_p"></p>
+    </div>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="sec-head">
-      <div class="lbl" data-i18n="assure_lbl">03 / Assurance</div>
+      <div class="lbl" data-i18n="assure_lbl">04 / Assurance</div>
       <div><h2 data-i18n="assure_h2">Every lift, to the same standard</h2></div>
     </div>
     <div class="assure">
@@ -564,7 +776,7 @@ footer a:hover{color:var(--blue)}
 <section class="dark">
   <div class="wrap">
     <div class="sec-head">
-      <div class="lbl" data-i18n="proc_lbl">04 / Process</div>
+      <div class="lbl" data-i18n="proc_lbl">05 / Process</div>
       <div><h2 data-i18n="proc_h2">From enquiry to lift in four steps</h2></div>
     </div>
     <div class="steps">
@@ -579,7 +791,7 @@ footer a:hover{color:var(--blue)}
 <section id="projects">
   <div class="wrap">
     <div class="sec-head">
-      <div class="lbl" data-i18n="proj_lbl">05 / Projects</div>
+      <div class="lbl" data-i18n="proj_lbl">06 / Projects</div>
       <div>
         <h2 data-i18n="proj_h2">Proof, not just pictures</h2>
         <p class="lead" data-i18n="proj_lead">Follow us on Instagram <a class="ig" href="https://www.instagram.com/aeroliftmachinerymy/" target="_blank" rel="noopener">@aeroliftmachinerymy</a> for more up-to-date showcase and updates on our work!</p>
@@ -605,7 +817,7 @@ footer a:hover{color:var(--blue)}
 <section id="about" class="bone">
   <div class="wrap">
     <div class="sec-head">
-      <div class="lbl" data-i18n="about_lbl">06 / Company</div>
+      <div class="lbl" data-i18n="about_lbl">07 / Company</div>
       <div><h2 data-i18n="about_h2">Built on hard work and a relentless pursuit of excellence</h2></div>
     </div>
     <div class="about" style="background:#fff">
@@ -628,7 +840,7 @@ footer a:hover{color:var(--blue)}
 <section id="contact">
   <div class="wrap">
     <div class="sec-head">
-      <div class="lbl" data-i18n="contact_lbl">07 / Enquiry</div>
+      <div class="lbl" data-i18n="contact_lbl">08 / Enquiry</div>
       <div><h2 data-i18n="contact_h2">Have a lift coming up?</h2></div>
     </div>
     <div class="quote">
@@ -767,7 +979,7 @@ footer a:hover{color:var(--blue)}
 </div>
 
 
-<script id="i18n-data" type="application/json">{"en":{"util_contact":"Contact","hours_text":"Mon–Fri, 9:00 AM – 5:00 PM","nav_home":"Home","nav_services":"Services","nav_fleet":"Fleet","nav_projects":"Projects","nav_about":"About","nav_contact":"Contact","nav_cta":"Get a quote →","hero_eyebrow":"Mobile crane &amp; skylift hire · KL · Selangor","hero_h1b":"tonne lifts,","hero_h1c":"done right.","hero_p":"JKKP/DOSH-registered competent operators, certified and inspected equipment, and same-day site assessment for construction and industrial projects across Malaysia.","hero_cta1":"Get a quote in 24 hours →","hero_cta2":"View fleet","strip1":"Mobile crane capacity","strip2":"Skylift working height","strip3":"JKKP/DOSH operators","strip4":"Operating since","svc_lbl":"01 / Services","svc_h2":"Four ways we get your load off the ground","svc_lead":"Beyond rental. We assess the site, engineer the lift, and put a certified crew on it.","svc1_h3":"Mobile crane rental","svc1_p":"Road-mobile lifting from light urban jobs to heavy plant and infrastructure work. Fast mobilisation across KL and Selangor, competent operator included.","svc1_link":"See capacities →","svc2_h3":"Skylift &amp; access platform","svc2_p":"Safe working-at-height access for installation, maintenance and inspection — indoor and outdoor, on paved and rough ground.","svc2_link":"See working heights →","svc3_cap":"Free","svc3_h3":"Site assessment","svc3_p":"We visit the site and check access, ground conditions, radius and obstructions, then confirm which machine fits the job. No charge, no obligation.","svc3_link":"Book an assessment →","svc4_cap":"Quoted separately","svc4_h3":"Lift planning","svc4_p":"Engineered lift plans, rigging studies and load charts for complex or critical lifts. Priced on the complexity of the project — quoted before any work begins.","svc4_link":"Discuss your lift →","fleet_lbl":"02 / Fleet","fleet_h2":"Know what you're booking","fleet_lead":"Buyers filter by tonnage before they ever call. These are the capacity bands we cover — tell us the load and we'll confirm the exact machine.","fleet1_ty":"Mobile / all-terrain","fleet1_p":"Urban sites, tight access, short-duration lifts and general construction.","fleet1_st":"Available Upon Request","fleet2_ty":"Mobile / rough terrain","fleet2_p":"Structural steel, precast panels, plant installation and positioning.","fleet2_st":"Available Upon Request","fleet3_ty":"Mobile / all-terrain","fleet3_p":"Heavy plant, tower crane erection and dismantling, infrastructure.","fleet3_st":"Available — Subject to Site Assessment &amp; Confirmation","fleet4_ty":"Heavy-lift mobile","fleet4_p":"Major infrastructure, refinery, power and industrial plant programmes.","fleet4_st":"On Request","fleet5_ty":"Skylift / access platform","fleet5_p":"Working at height for M&amp;E installation, façade work, signage, warehouse and plant maintenance — 20 to 55 metres of working height, indoor and outdoor.","fleet5_st":"Available across the range","fleet_note":"Need something outside these bands? We source through a vetted partner network —","fleet_note_link":"tell us the load","assure_lbl":"03 / Assurance","assure_h2":"Every lift, to the same standard","assure1_b":"Competent operators","assure1_p":"JKKP/DOSH-registered competent crane operators on every lift.","assure2_b":"Qualified personnel","assure2_p":"Experienced riggers and signalmen who have run the job before.","assure3_b":"Certified equipment","assure3_p":"Machines certified and inspected to schedule, records on file.","assure4_b":"Safety-focused","assure4_p":"Lifting operations planned, briefed and supervised — not improvised.","assure5_b":"Trusted experience","assure5_p":"Proven across construction and industrial projects nationwide.","proc_lbl":"04 / Process","proc_h2":"From enquiry to lift in four steps","proc1_h4":"Tell us the load","proc1_p":"Weight, radius, site access, dates. Two minutes on the form or one call.","proc2_h4":"Site assessment","proc2_p":"We visit or review your drawings and confirm the right machine and rigging plan.","proc3_h4":"Written quote","proc3_p":"Fixed scope, mobilisation, operator and insurance — no surprise line items.","proc4_h4":"Lift executed","proc4_p":"Certified crew on site, permits in order, documented completion.","proj_lbl":"05 / Projects","proj_h2":"Proof, not just pictures","proj_lead":"Follow us on Instagram <a class=\"ig\" href=\"https://www.instagram.com/aeroliftmachinerymy/\" target=\"_blank\" rel=\"noopener\">@aeroliftmachinerymy</a> for more up-to-date showcase and updates on our work!","about_lbl":"06 / Company","about_h2":"Built on hard work and a relentless pursuit of excellence","about_p1":"Aerolift Machinery Sdn Bhd began as a small crane rental company and has grown into a mechanical lifting enterprise serving construction and industrial projects across Malaysia.","about_p2":"Our people are the foundation of that success — supported by continuous training, mentorship, and a culture built on trust, open communication and respect.","cred_established":"Established","cred_registration":"Registration","cred_certifications":"Certifications","cred_insurance":"Insurance","cred_cert_ph":"DOSH Competency, PMA, CIDB Green Card","cred_ins_ph":"Yes","contact_lbl":"07 / Enquiry","contact_h2":"Have a lift coming up?","quote_h2":"Get a written quote in 24 hours","quote_p":"Tell us the load and the site. We'll confirm the machine, the crew and the price — in writing, with no surprise line items.","quote_li1":"Free site assessment","quote_li2":"Operator &amp; insurance included","quote_li3":"Fixed, itemised scope","quote_wa_label":"Fastest way to reach us is WhatsApp:","form_name":"Name","form_company":"Company","form_phone":"Phone","form_email":"Email","form_equipment":"Equipment","form_opt1":"Mobile crane — 25–50 T","form_opt2":"Mobile crane — 50–150 T","form_opt3":"Mobile crane — 150–300 T","form_opt4":"Mobile crane — 300–500 T","form_opt5":"Skylift — 20–55 m","form_opt6":"Not sure — please advise","form_date":"Required date","form_submit":"Send enquiry →","cta_h2a":"Or message us","cta_h2b":"on WhatsApp.","cta_p":"Shirley and Andrew both pick up.","footer_reg_label":"Company Registration No.","footer_blurb":"Mobile crane and skylift rental with JKKP/DOSH-registered competent operators, serving Kuala Lumpur, Selangor and nationwide. Operating since 2013.","footer_h5_services":"Services","footer_h5_company":"Company","footer_h5_contact":"Contact","footer_link_mobile":"Mobile crane rental","footer_link_skylift":"Skylift &amp; access","footer_link_site":"Site assessment","footer_link_lift":"Lift planning","footer_link_about":"About","footer_link_projects":"Projects","footer_link_careers":"Careers","footer_link_contact":"Contact","footer_rights":"All rights reserved.","footer_privacy":"Privacy","footer_terms":"Terms","footer_sitemap":"Sitemap","mbar_quote":"Get a quote","form_opt_choose":"— Please select —","form_assess":"Site assessment","form_assess_needed":"Needed","form_assess_not":"Not needed","form_location":"Site location","form_location_ph":"e.g. Jalan Ampang, Kuala Lumpur","form_load":"Load details","form_load_ph":"What are we lifting? Weight, dimensions, quantity…","form_site":"Site details","form_site_ph":"Access, ground conditions, obstructions, working hours…","form_preview_title":"Enquiry preview","form_preview_hint":"This is exactly what will be sent on WhatsApp.","form_preview_empty":"Complete the fields marked * and your enquiry message will appear here.","form_missing":"Still needed:","form_ready":"Your enquiry is ready — send it to:","form_wa_shirley":"WhatsApp Shirley","form_wa_andrew":"WhatsApp Andrew","prev_intro":"Hi Aerolift, I would like to request a quote.","prev_name":"Name","prev_company":"Company","prev_phone":"Phone","prev_email":"Email","prev_equipment":"Equipment required","prev_date":"Date required","prev_location":"Site location","prev_load":"Load details","prev_site":"Site details","prev_assess":"Site assessment","prev_thanks":"Thank you.","legal_lang_note":"This document is provided in English. The English version is the governing version.","car_title":"Join our team","car_intro":"Tell us a little about yourself and we will be in touch. Fields marked * are required.","car_position":"Position applying for","car_pos_engineer":"Engineer","car_pos_mechanic":"Mechanic","car_pos_store":"Store Helper","car_pos_crane":"Mobile Crane Operator","car_pos_skylift":"Skylift Operator","car_pos_other":"Others","car_other_label":"Please specify","car_other_ph":"Which role are you applying for?","car_name":"Full name","car_phone":"Contact number","car_email":"Email","car_location":"Where are you based?","car_location_ph":"e.g. Seri Kembangan, Selangor","car_years":"Years of experience","car_yr_none":"No experience","car_yr_lt1":"Less than 1 year","car_yr_1_3":"1 – 3 years","car_yr_3_5":"3 – 5 years","car_yr_5p":"More than 5 years","car_certs":"Licences &amp; certifications","car_certs_ph":"e.g. JKKP/DOSH competency, driving licence class","car_exp":"Previous work experience","car_exp_ph":"Tell us about your previous work experience in this field. If none, put N/A.","car_preview_title":"Application preview","car_preview_empty":"Complete the fields marked * and your application will appear here.","car_ready":"Your application is ready — send it to:","car_submit":"Send application →","cprev_intro":"Hi Aerolift, I would like to apply for a position.","cprev_position":"Position applying for","cprev_name":"Name","cprev_phone":"Contact number","cprev_email":"Email","cprev_location":"Based in","cprev_years":"Years of experience","cprev_certs":"Licences and certifications","cprev_exp":"Previous work experience","cprev_thanks":"Thank you for your consideration.","footer_follow":"Follow us on","footer_more":"Find us here"},"ms":{"util_contact":"Hubungi","hours_text":"Isnin–Jumaat, 9:00 Pagi – 5:00 Petang","nav_home":"Laman Utama","nav_services":"Perkhidmatan","nav_fleet":"Armada","nav_projects":"Projek","nav_about":"Tentang Kami","nav_contact":"Hubungi","nav_cta":"Dapatkan Sebut Harga →","hero_eyebrow":"Sewaan Kren Mudah Alih &amp; Skylift · KL · Selangor","hero_h1b":"angkatan tan,","hero_h1c":"dibuat dengan betul.","hero_p":"Operator kompeten berdaftar JKKP/DOSH, peralatan bertauliah dan diperiksa, serta penilaian tapak sehari untuk projek pembinaan dan perindustrian di seluruh Malaysia.","hero_cta1":"Dapatkan Sebut Harga Dalam 24 Jam →","hero_cta2":"Lihat Armada","strip1":"Kapasiti kren mudah alih","strip2":"Ketinggian kerja skylift","strip3":"Operator JKKP/DOSH","strip4":"Beroperasi sejak","svc_lbl":"01 / Perkhidmatan","svc_h2":"Empat cara kami mengangkat beban anda","svc_lead":"Bukan sekadar sewaan. Kami menilai tapak, merekayasa angkatan, dan menghantar krew bertauliah.","svc1_h3":"Sewaan Kren Mudah Alih","svc1_p":"Pengangkatan mudah alih di atas jalan raya daripada kerja bandar ringan hingga kerja loji berat dan infrastruktur. Penggerakan pantas di seluruh KL dan Selangor, operator kompeten disertakan.","svc1_link":"Lihat kapasiti →","svc2_h3":"Skylift &amp; Platform Akses","svc2_p":"Akses kerja di ketinggian yang selamat untuk pemasangan, penyelenggaraan dan pemeriksaan — dalam dan luar bangunan, di permukaan turap dan tanah kasar.","svc2_link":"Lihat ketinggian kerja →","svc3_cap":"Percuma","svc3_h3":"Penilaian Tapak","svc3_p":"Kami melawat tapak dan menyemak akses, keadaan tanah, jejari dan halangan, kemudian mengesahkan mesin yang sesuai untuk kerja tersebut. Tiada bayaran, tiada obligasi.","svc3_link":"Tempah penilaian →","svc4_cap":"Disebut Harga Berasingan","svc4_h3":"Perancangan Angkatan","svc4_p":"Pelan angkatan direkayasa, kajian rig dan carta beban untuk angkatan kompleks atau kritikal. Dikira berdasarkan kerumitan projek — disebut harga sebelum kerja bermula.","svc4_link":"Bincang angkatan anda →","fleet_lbl":"02 / Armada","fleet_h2":"Ketahui apa yang anda tempah","fleet_lead":"Pembeli menapis mengikut tan sebelum menghubungi kami. Ini adalah jalur kapasiti yang kami sediakan — beritahu kami beban anda dan kami akan sahkan mesin yang tepat.","fleet1_ty":"Mudah alih / semua rupa bumi","fleet1_p":"Tapak bandar, akses sempit, angkatan tempoh pendek dan pembinaan am.","fleet1_st":"Tersedia Atas Permintaan","fleet2_ty":"Mudah alih / rupa bumi kasar","fleet2_p":"Keluli struktur, panel prapasang, pemasangan dan penempatan loji.","fleet2_st":"Tersedia Atas Permintaan","fleet3_ty":"Mudah alih / semua rupa bumi","fleet3_p":"Loji berat, pemasangan dan pembongkaran kren menara, infrastruktur.","fleet3_st":"Tersedia — Tertakluk kepada Penilaian Tapak &amp; Pengesahan","fleet4_ty":"Mudah alih angkatan berat","fleet4_p":"Infrastruktur utama, kilang penapisan, kuasa dan program loji perindustrian.","fleet4_st":"Atas Permintaan","fleet5_ty":"Skylift / platform akses","fleet5_p":"Kerja di ketinggian untuk pemasangan M&amp;E, kerja fasad, papan tanda, gudang dan penyelenggaraan loji — 20 hingga 55 meter ketinggian kerja, dalam dan luar bangunan.","fleet5_st":"Tersedia untuk keseluruhan julat","fleet_note":"Perlukan sesuatu di luar jalur ini? Kami dapatkan melalui rangkaian rakan kongsi yang disahkan —","fleet_note_link":"beritahu kami beban anda","assure_lbl":"03 / Jaminan","assure_h2":"Setiap angkatan, dengan standard yang sama","assure1_b":"Operator kompeten","assure1_p":"Operator kren kompeten berdaftar JKKP/DOSH pada setiap angkatan.","assure2_b":"Kakitangan berkelayakan","assure2_p":"Pemasang rig dan pemberi isyarat berpengalaman yang pernah menjalankan kerja ini.","assure3_b":"Peralatan bertauliah","assure3_p":"Mesin bertauliah dan diperiksa mengikut jadual, rekod disimpan.","assure4_b":"Berfokuskan keselamatan","assure4_p":"Operasi pengangkatan dirancang, ditaklimat dan diselia — bukan secara spontan.","assure5_b":"Pengalaman dipercayai","assure5_p":"Terbukti merentasi projek pembinaan dan perindustrian di seluruh negara.","proc_lbl":"04 / Proses","proc_h2":"Daripada pertanyaan ke angkatan dalam empat langkah","proc1_h4":"Beritahu kami beban anda","proc1_p":"Berat, jejari, akses tapak, tarikh. Dua minit di borang atau satu panggilan.","proc2_h4":"Penilaian tapak","proc2_p":"Kami melawat atau menyemak lukisan anda dan mengesahkan mesin serta pelan rig yang betul.","proc3_h4":"Sebut harga bertulis","proc3_p":"Skop tetap, penggerakan, operator dan insurans — tiada item baris mengejutkan.","proc4_h4":"Angkatan dilaksanakan","proc4_p":"Krew bertauliah di tapak, permit teratur, penyiapan didokumenkan.","proj_lbl":"05 / Projek","proj_h2":"Bukti, bukan sekadar gambar","proj_lead":"Ikuti kami di Instagram <a class=\"ig\" href=\"https://www.instagram.com/aeroliftmachinerymy/\" target=\"_blank\" rel=\"noopener\">@aeroliftmachinerymy</a> untuk paparan terkini dan perkembangan kerja kami!","about_lbl":"06 / Syarikat","about_h2":"Dibina atas kerja keras dan usaha gigih ke arah kecemerlangan","about_p1":"Aerolift Machinery Sdn Bhd bermula sebagai syarikat sewaan kren kecil dan telah berkembang menjadi enterprise pengangkatan mekanikal yang menyediakan perkhidmatan untuk projek pembinaan dan perindustrian di seluruh Malaysia.","about_p2":"Kakitangan kami adalah asas kejayaan itu — disokong oleh latihan berterusan, bimbingan, dan budaya yang dibina atas kepercayaan, komunikasi terbuka dan rasa hormat.","cred_established":"Ditubuhkan","cred_registration":"Pendaftaran","cred_certifications":"Pensijilan","cred_insurance":"Insurans","cred_cert_ph":"DOSH Competency, PMA, CIDB Green Card","cred_ins_ph":"Ya","contact_lbl":"07 / Pertanyaan","contact_h2":"Ada angkatan akan datang?","quote_h2":"Dapatkan sebut harga bertulis dalam 24 jam","quote_p":"Beritahu kami beban dan tapak. Kami akan sahkan mesin, krew dan harga — secara bertulis, tanpa item baris mengejutkan.","quote_li1":"Penilaian tapak percuma","quote_li2":"Operator &amp; insurans disertakan","quote_li3":"Skop tetap dan terperinci","quote_wa_label":"Cara terpantas menghubungi kami ialah WhatsApp:","form_name":"Nama","form_company":"Syarikat","form_phone":"Telefon","form_email":"E-mel","form_equipment":"Peralatan","form_opt1":"Kren mudah alih — 25–50 T","form_opt2":"Kren mudah alih — 50–150 T","form_opt3":"Kren mudah alih — 150–300 T","form_opt4":"Kren mudah alih — 300–500 T","form_opt5":"Skylift — 20–55 m","form_opt6":"Tidak pasti — sila nasihatkan","form_date":"Tarikh diperlukan","form_submit":"Hantar pertanyaan →","cta_h2a":"Atau hubungi kami","cta_h2b":"melalui WhatsApp.","cta_p":"Shirley dan Andrew kedua-duanya akan menjawab.","footer_reg_label":"No. Pendaftaran Syarikat","footer_blurb":"Sewaan kren mudah alih dan skylift dengan operator kompeten berdaftar JKKP/DOSH, menyediakan perkhidmatan di Kuala Lumpur, Selangor dan seluruh negara. Beroperasi sejak 2013.","footer_h5_services":"Perkhidmatan","footer_h5_company":"Syarikat","footer_h5_contact":"Hubungi","footer_link_mobile":"Sewaan kren mudah alih","footer_link_skylift":"Skylift &amp; akses","footer_link_site":"Penilaian tapak","footer_link_lift":"Perancangan angkatan","footer_link_about":"Tentang Kami","footer_link_projects":"Projek","footer_link_careers":"Kerjaya","footer_link_contact":"Hubungi","footer_rights":"Hak cipta terpelihara.","footer_privacy":"Privasi","footer_terms":"Terma","footer_sitemap":"Peta Laman","mbar_quote":"Dapatkan Sebut Harga","form_opt_choose":"— Sila pilih —","form_assess":"Penilaian tapak","form_assess_needed":"Diperlukan","form_assess_not":"Tidak diperlukan","form_location":"Lokasi tapak","form_location_ph":"cth. Jalan Ampang, Kuala Lumpur","form_load":"Butiran beban","form_load_ph":"Apa yang perlu diangkat? Berat, ukuran, kuantiti…","form_site":"Butiran tapak","form_site_ph":"Akses, keadaan tanah, halangan, waktu kerja…","form_preview_title":"Pratonton pertanyaan","form_preview_hint":"Inilah mesej yang akan dihantar melalui WhatsApp.","form_preview_empty":"Lengkapkan ruangan bertanda * dan mesej pertanyaan anda akan dipaparkan di sini.","form_missing":"Masih diperlukan:","form_ready":"Pertanyaan anda sedia — hantar kepada:","form_wa_shirley":"WhatsApp Shirley","form_wa_andrew":"WhatsApp Andrew","prev_intro":"Salam Aerolift, saya ingin memohon sebut harga.","prev_name":"Nama","prev_company":"Syarikat","prev_phone":"Telefon","prev_email":"E-mel","prev_equipment":"Peralatan diperlukan","prev_date":"Tarikh diperlukan","prev_location":"Lokasi tapak","prev_load":"Butiran beban","prev_site":"Butiran tapak","prev_assess":"Penilaian tapak","prev_thanks":"Terima kasih.","legal_lang_note":"Dokumen ini disediakan dalam bahasa Inggeris. Versi bahasa Inggeris adalah versi yang mengikat.","car_title":"Sertai pasukan kami","car_intro":"Beritahu kami sedikit tentang diri anda dan kami akan menghubungi anda. Ruangan bertanda * adalah wajib.","car_position":"Jawatan dipohon","car_pos_engineer":"Jurutera","car_pos_mechanic":"Mekanik","car_pos_store":"Pembantu Stor","car_pos_crane":"Operator Kren Mudah Alih","car_pos_skylift":"Operator Skylift","car_pos_other":"Lain-lain","car_other_label":"Sila nyatakan","car_other_ph":"Jawatan apa yang anda pohon?","car_name":"Nama penuh","car_phone":"Nombor telefon","car_email":"E-mel","car_location":"Anda menetap di mana?","car_location_ph":"cth. Seri Kembangan, Selangor","car_years":"Tahun pengalaman","car_yr_none":"Tiada pengalaman","car_yr_lt1":"Kurang daripada 1 tahun","car_yr_1_3":"1 – 3 tahun","car_yr_3_5":"3 – 5 tahun","car_yr_5p":"Lebih daripada 5 tahun","car_certs":"Lesen &amp; pensijilan","car_certs_ph":"cth. kompetensi JKKP/DOSH, kelas lesen memandu","car_exp":"Pengalaman kerja lepas","car_exp_ph":"Ceritakan pengalaman kerja anda dalam bidang ini. Jika tiada, tulis N/A.","car_preview_title":"Pratonton permohonan","car_preview_empty":"Lengkapkan ruangan bertanda * dan permohonan anda akan dipaparkan di sini.","car_ready":"Permohonan anda sedia — hantar kepada:","car_submit":"Hantar permohonan →","cprev_intro":"Salam Aerolift, saya ingin memohon jawatan.","cprev_position":"Jawatan dipohon","cprev_name":"Nama","cprev_phone":"Nombor telefon","cprev_email":"E-mel","cprev_location":"Menetap di","cprev_years":"Tahun pengalaman","cprev_certs":"Lesen dan pensijilan","cprev_exp":"Pengalaman kerja lepas","cprev_thanks":"Terima kasih atas pertimbangan anda.","footer_follow":"Ikuti kami di","footer_more":"Cari kami di sini"},"zh":{"util_contact":"联系","hours_text":"周一至周五，上午9:00 – 下午5:00","nav_home":"首页","nav_services":"服务","nav_fleet":"车队","nav_projects":"项目案例","nav_about":"关于我们","nav_contact":"联系我们","nav_cta":"获取报价 →","hero_eyebrow":"移动起重机与高空作业平台租赁 · 吉隆坡 · 雪兰莪","hero_h1b":"吨吊装，","hero_h1c":"一次做对。","hero_p":"持有 JKKP/DOSH 注册资格的熟练操作员，经认证且定期检验的设备，以及针对全马来西亚建筑与工业项目的当日现场评估服务。","hero_cta1":"24小时内获取报价 →","hero_cta2":"查看车队","strip1":"移动起重机载重","strip2":"高空平台作业高度","strip3":"JKKP/DOSH 注册操作员","strip4":"营业时间自","svc_lbl":"01 / 服务","svc_h2":"四种方式助您顺利完成吊装","svc_lead":"不仅仅是租赁。我们评估现场、设计吊装方案，并派遣认证团队执行作业。","svc1_h3":"移动起重机租赁","svc1_p":"从轻型市区作业到重型设备与基础设施工程的道路移动式起重。快速进驻吉隆坡与雪兰莪全境，含熟练操作员。","svc1_link":"查看载重能力 →","svc2_h3":"高空作业平台与登高设备","svc2_p":"为安装、维修与检查作业提供安全的高空作业支持 —— 适用于室内室外、硬化路面与崎岖地面。","svc2_link":"查看作业高度 →","svc3_cap":"免费","svc3_h3":"现场评估","svc3_p":"我们实地考察现场，检查进出口、地面情况、作业半径与障碍物，确认适合该作业的机型。不收费，不构成任何义务。","svc3_link":"预约评估 →","svc4_cap":"另行报价","svc4_h3":"吊装方案设计","svc4_p":"针对复杂或关键吊装作业提供工程化吊装方案、绑扎研究与载荷表。根据项目复杂程度计价 —— 作业开始前先行报价。","svc4_link":"咨询您的吊装需求 →","fleet_lbl":"02 / 车队","fleet_h2":"了解您预订的设备","fleet_lead":"买家在来电前就会按吨位筛选。以下是我们提供的载重区间 —— 告诉我们负载，我们将确认具体机型。","fleet1_ty":"移动式 / 全地形","fleet1_p":"市区现场、狭窄通道、短时作业与一般建筑工程。","fleet1_st":"根据需求可用","fleet2_ty":"移动式 / 越野型","fleet2_p":"钢结构、预制板安装与设备安装定位。","fleet2_st":"根据需求可用","fleet3_ty":"移动式 / 全地形","fleet3_p":"重型设备、塔式起重机安装与拆卸、基础设施工程。","fleet3_st":"可用 —— 需经现场评估与确认","fleet4_ty":"重型移动式起重机","fleet4_p":"重大基础设施、炼油厂、电力与工业厂房项目。","fleet4_st":"需视情况确认","fleet5_ty":"高空作业平台 / 登高设备","fleet5_p":"适用于机电安装、幕墙工程、标牌安装、仓库与设备维护等高空作业 —— 作业高度 20 至 55 米，适用于室内室外。","fleet5_st":"全系列均可用","fleet_note":"需要以上区间以外的设备？我们通过经过审核的合作伙伴网络调度 ——","fleet_note_link":"告诉我们您的负载","assure_lbl":"03 / 保障","assure_h2":"每一次吊装，同一标准","assure1_b":"熟练操作员","assure1_p":"每次吊装均由 JKKP/DOSH 注册资格的熟练起重机操作员执行。","assure2_b":"合格人员","assure2_p":"经验丰富的绑扎工与指挥人员，均处理过相似作业。","assure3_b":"设备经过认证","assure3_p":"机器经认证并按计划定期检验，记录存档可查。","assure4_b":"以安全为先","assure4_p":"吊装作业经过计划、交底与监督 —— 绝不临时起意。","assure5_b":"可信赖的经验","assure5_p":"已在全国建筑与工业项目中得到验证。","proc_lbl":"04 / 流程","proc_h2":"四步完成从咨询到吊装作业","proc1_h4":"告诉我们您的负载","proc1_p":"重量、半径、现场出入与日期。填写表单只需两分钟，或直接来电即可。","proc2_h4":"现场评估","proc2_p":"我们实地考察或审阅您的图纸，确认合适的设备与绑扎方案。","proc3_h4":"书面报价","proc3_p":"固定作业范围、进驻费、操作员与保险 —— 无任何隐藏费用。","proc4_h4":"完成吊装作业","proc4_p":"认证团队到场，许可手续齐全，完工后提供完整文件记录。","proj_lbl":"05 / 项目案例","proj_h2":"用事实说话，而不仅仅是图片","proj_lead":"关注我们的 Instagram <a class=\"ig\" href=\"https://www.instagram.com/aeroliftmachinerymy/\" target=\"_blank\" rel=\"noopener\">@aeroliftmachinerymy</a>，获取更多最新作品展示与工作动态！","about_lbl":"06 / 公司简介","about_h2":"由努力与持续追求卓越所建立","about_p1":"Aerolift Machinery Sdn Bhd 创业之初只是一家小型起重机租赁公司，如今已发展成为面向马来西亚建筑与工业项目的机械吊装企业。","about_p2":"我们的团队是这一成功的基石 —— 依靠持续培训、导师制，以及基于信任、坦诚沟通与尊重的企业文化。","cred_established":"创立于","cred_registration":"注册号","cred_certifications":"认证","cred_insurance":"保险","cred_cert_ph":"DOSH Competency, PMA, CIDB Green Card","cred_ins_ph":"是","contact_lbl":"07 / 咨询","contact_h2":"有吊装需求？","quote_h2":"24小时内获取书面报价","quote_p":"告诉我们负载与现场情况。我们将以书面形式确认设备、团队与价格 —— 无任何隐藏费用。","quote_li1":"免费现场评估","quote_li2":"包含操作员与保险","quote_li3":"固定且明细的作业范围","quote_wa_label":"最快联系我们的方式是 WhatsApp：","form_name":"姓名","form_company":"公司","form_phone":"电话","form_email":"电子邮箱","form_equipment":"所需设备","form_opt1":"移动起重机 — 25–50 吨","form_opt2":"移动起重机 — 50–150 吨","form_opt3":"移动起重机 — 150–300 吨","form_opt4":"移动起重机 — 300–500 吨","form_opt5":"高空作业平台 — 20–55 米","form_opt6":"不确定 — 请为我推荐","form_date":"需求日期","form_submit":"提交咨询 →","cta_h2a":"或通过","cta_h2b":"WhatsApp 联系我们。","cta_p":"Shirley 与 Andrew 均会为您接听。","footer_reg_label":"公司注册号","footer_blurb":"提供移动起重机与高空作业平台租赁服务，配备 JKKP/DOSH 注册资格的熟练操作员，服务覆盖吉隆坡、雪兰莪与全国各地。自2013年营业。","footer_h5_services":"服务","footer_h5_company":"公司","footer_h5_contact":"联系我们","footer_link_mobile":"移动起重机租赁","footer_link_skylift":"高空作业平台","footer_link_site":"现场评估","footer_link_lift":"吊装方案设计","footer_link_about":"关于我们","footer_link_projects":"项目案例","footer_link_careers":"职业机会","footer_link_contact":"联系我们","footer_rights":"保留所有权利。","footer_privacy":"隐私政策","footer_terms":"使用条款","footer_sitemap":"网站地图","mbar_quote":"获取报价","form_opt_choose":"— 请选择 —","form_assess":"现场评估","form_assess_needed":"需要","form_assess_not":"不需要","form_location":"现场地点","form_location_ph":"例如：吉隆坡 Jalan Ampang","form_load":"负载详情","form_load_ph":"需要吊装什么？重量、尺寸、数量……","form_site":"现场详情","form_site_ph":"出入通道、地面情况、障碍物、作业时间……","form_preview_title":"咨询内容预览","form_preview_hint":"以下即为将通过 WhatsApp 发送的内容。","form_preview_empty":"填写标有 * 的必填项，您的咨询内容将显示在此处。","form_missing":"仍需填写：","form_ready":"您的咨询已准备就绪 — 发送给：","form_wa_shirley":"WhatsApp 联系 Shirley","form_wa_andrew":"WhatsApp 联系 Andrew","prev_intro":"您好 Aerolift，我想获取报价。","prev_name":"姓名","prev_company":"公司","prev_phone":"电话","prev_email":"电子邮箱","prev_equipment":"所需设备","prev_date":"需求日期","prev_location":"现场地点","prev_load":"负载详情","prev_site":"现场详情","prev_assess":"现场评估","prev_thanks":"谢谢。","legal_lang_note":"本文件以英文提供，并以英文版本为准。","car_title":"加入我们的团队","car_intro":"请简单介绍您自己，我们会尽快与您联系。标有 * 的为必填项。","car_position":"应聘职位","car_pos_engineer":"工程师","car_pos_mechanic":"机械技工","car_pos_store":"仓库助理","car_pos_crane":"移动起重机操作员","car_pos_skylift":"高空作业平台操作员","car_pos_other":"其他","car_other_label":"请说明","car_other_ph":"您想应聘什么职位？","car_name":"姓名","car_phone":"联络电话","car_email":"电子邮箱","car_location":"您目前居住在哪里？","car_location_ph":"例如：雪兰莪 Seri Kembangan","car_years":"工作年资","car_yr_none":"没有经验","car_yr_lt1":"少于 1 年","car_yr_1_3":"1 – 3 年","car_yr_3_5":"3 – 5 年","car_yr_5p":"5 年以上","car_certs":"执照与证书","car_certs_ph":"例如：JKKP/DOSH 资格证、驾照等级","car_exp":"过往工作经验","car_exp_ph":"请说明您在此领域的过往工作经验。若没有，请填写 N/A。","car_preview_title":"申请内容预览","car_preview_empty":"填写标有 * 的必填项，您的申请内容将显示在此处。","car_ready":"您的申请已准备就绪 — 发送给：","car_submit":"提交申请 →","cprev_intro":"您好 Aerolift，我想应聘贵公司的职位。","cprev_position":"应聘职位","cprev_name":"姓名","cprev_phone":"联络电话","cprev_email":"电子邮箱","cprev_location":"居住地","cprev_years":"工作年资","cprev_certs":"执照与证书","cprev_exp":"过往工作经验","cprev_thanks":"感谢您的考虑。","footer_follow":"关注我们的","footer_more":"在这里找到我们"},"ta":{"util_contact":"தொடர்பு கொள்ளவும்","hours_text":"திங்கள்–வெள்ளி, காலை 9:00 – மாலை 5:00","nav_home":"முகப்பு","nav_services":"சேவைகள்","nav_fleet":"இயந்திரங்கள்","nav_projects":"திட்டங்கள்","nav_about":"எங்களைப் பற்றி","nav_contact":"தொடர்பு","nav_cta":"மேற்கோள் பெறவும் →","hero_eyebrow":"மொபைல் கிரேன் மற்றும் ஸ்கைலிஃப்ட் வாடகை · KL · செலாங்கூர்","hero_h1b":"டன் தூக்கும் பணிகள்,","hero_h1c":"சரியாகச் செய்யப்படுகிறது.","hero_p":"JKKP/DOSH பதிவுசெய்யப்பட்ட திறமையான இயக்குநர்கள், சான்றிதழ் பெற்றதும் பரிசோதிக்கப்பட்டதுமான உபகரணங்கள், மேலும் மலேசியா முழுவதும் கட்டுமான மற்றும் தொழில்துறை திட்டங்களுக்கு அன்றே தள மதிப்பீடு.","hero_cta1":"24 மணி நேரத்தில் மேற்கோள் பெறவும் →","hero_cta2":"இயந்திரங்களைப் பார்க்க","strip1":"மொபைல் கிரேன் திறன்","strip2":"ஸ்கைலிஃப்ட் பணி உயரம்","strip3":"JKKP/DOSH இயக்குநர்கள்","strip4":"இயங்கி வருகிறது","svc_lbl":"01 / சேவைகள்","svc_h2":"உங்கள் சுமையை தூக்குவதற்கான நான்கு வழிகள்","svc_lead":"வெறும் வாடகை மட்டுமல்ல. நாங்கள் தளத்தை மதிப்பீடு செய்து, தூக்கத்தை திட்டமிட்டு, சான்றிதழ் பெற்ற குழுவை அனுப்புகிறோம்.","svc1_h3":"மொபைல் கிரேன் வாடகை","svc1_p":"இலகுவான நகர பணிகளிலிருந்து கனரக உபகரண மற்றும் உள்கட்டமைப்பு பணிகள் வரை சாலை வழி நகரும் தூக்குதல். KL மற்றும் செலாங்கூர் முழுவதும் விரைவான வருகை, திறமையான இயக்குநருடன்.","svc1_link":"திறன்களைப் பார்க்க →","svc2_h3":"ஸ்கைலிஃப்ட் மற்றும் அணுகல் தளம்","svc2_p":"நிறுவல், பராமரிப்பு மற்றும் ஆய்வுக்கான பாதுகாப்பான உயர இட பணி அணுகல் — கட்டிடத்திற்குள்ளும் வெளியேயும், தளப்பாதைகளிலும் கரடுமுரடான நிலத்திலும்.","svc2_link":"பணி உயரங்களைப் பார்க்க →","svc3_cap":"இலவசம்","svc3_h3":"தள மதிப்பீடு","svc3_p":"நாங்கள் தளத்திற்குச் சென்று அணுகல், நிலவமைப்பு, சுற்றளவு மற்றும் தடைகளை சரிபார்த்து, பணிக்கு பொருந்தும் இயந்திரத்தை உறுதி செய்கிறோம். கட்டணமில்லை, கடமையும் இல்லை.","svc3_link":"மதிப்பீட்டை பதிவு செய்யவும் →","svc4_cap":"தனியே மேற்கோள்","svc4_h3":"தூக்கல் திட்டமிடல்","svc4_p":"சிக்கலான அல்லது முக்கியமான தூக்குதல்களுக்கு பொறியியல் தூக்கல் திட்டங்கள், கயிறு அமைப்பு ஆய்வுகள் மற்றும் சுமை அட்டவணைகள். திட்டத்தின் சிக்கல்தன்மையின் அடிப்படையில் விலை நிர்ணயம் — பணி தொடங்கும் முன் மேற்கோள் வழங்கப்படும்.","svc4_link":"உங்கள் தூக்கலைப் பற்றி விவாதிக்க →","fleet_lbl":"02 / இயந்திரங்கள்","fleet_h2":"நீங்கள் முன்பதிவு செய்வதை அறிந்துகொள்ளுங்கள்","fleet_lead":"வாங்குபவர்கள் அழைப்பதற்கு முன்பே எடையின் அடிப்படையில் தேர்வு செய்கிறார்கள். இவை நாங்கள் வழங்கும் திறன் வரம்புகள் — உங்கள் சுமையைச் சொல்லுங்கள், சரியான இயந்திரத்தை உறுதி செய்வோம்.","fleet1_ty":"மொபைல் / அனைத்து நிலப்பரப்பு","fleet1_p":"நகர்ப்புற தளங்கள், குறுகிய அணுகல், குறுகிய கால தூக்குதல்கள் மற்றும் பொது கட்டுமானம்.","fleet1_st":"கோரிக்கையின்படி கிடைக்கும்","fleet2_ty":"மொபைல் / கரடுமுரடான நிலப்பரப்பு","fleet2_p":"கட்டமைப்பு எஃகு, முன்கூட்டியே வார்க்கப்பட்ட பலகைகள், உபகரண நிறுவல் மற்றும் அமைவு.","fleet2_st":"கோரிக்கையின்படி கிடைக்கும்","fleet3_ty":"மொபைல் / அனைத்து நிலப்பரப்பு","fleet3_p":"கனரக உபகரணங்கள், கோபுர கிரேன் நிறுவுதல் மற்றும் அகற்றுதல், உள்கட்டமைப்பு.","fleet3_st":"கிடைக்கும் — தள மதிப்பீடு மற்றும் உறுதிப்படுத்தலுக்கு உட்பட்டது","fleet4_ty":"கனரக தூக்குதல் மொபைல்","fleet4_p":"முக்கிய உள்கட்டமைப்பு, சுத்திகரிப்பு நிலையம், மின்சாரம் மற்றும் தொழில்துறை திட்டங்கள்.","fleet4_st":"கோரிக்கையின் பேரில்","fleet5_ty":"ஸ்கைலிஃப்ட் / அணுகல் தளம்","fleet5_p":"மின் மற்றும் இயந்திர நிறுவல், முகப்பு பணி, அடையாள பலகைகள், கிடங்கு மற்றும் உபகரண பராமரிப்புக்கான உயர இட பணி — 20 முதல் 55 மீட்டர் வரையிலான பணி உயரம், கட்டிடத்திற்குள்ளும் வெளியேயும்.","fleet5_st":"முழு வரம்பிலும் கிடைக்கும்","fleet_note":"இந்த வரம்புகளுக்கு வெளியே ஏதேனும் தேவையா? சரிபார்க்கப்பட்ட கூட்டாளர் வலையமைப்பு மூலம் நாங்கள் பெற்றுத் தருகிறோம் —","fleet_note_link":"உங்கள் சுமையைச் சொல்லுங்கள்","assure_lbl":"03 / உறுதிப்பாடு","assure_h2":"ஒவ்வொரு தூக்குதலும், ஒரே தரத்தில்","assure1_b":"திறமையான இயக்குநர்கள்","assure1_p":"ஒவ்வொரு தூக்குதலிலும் JKKP/DOSH பதிவுசெய்யப்பட்ட திறமையான கிரேன் இயக்குநர்கள்.","assure2_b":"தகுதியான பணியாளர்கள்","assure2_p":"இதே பணியை முன்பே செய்திருந்த அனுபவம் மிக்க கயிறு அமைப்பாளர்களும் சமிக்ஞை பணியாளர்களும்.","assure3_b":"சான்றிதழ் பெற்ற உபகரணங்கள்","assure3_p":"இயந்திரங்கள் சான்றிதழ் பெற்றவை, அட்டவணைப்படி ஆய்வு செய்யப்படுகின்றன, பதிவுகள் பாதுகாக்கப்படுகின்றன.","assure4_b":"பாதுகாப்பை முன்னிறுத்துதல்","assure4_p":"தூக்கும் பணிகள் திட்டமிடப்பட்டு, விளக்கப்பட்டு, மேற்பார்வையிடப்பட்டு நடத்தப்படுகின்றன — திடீரென்று அல்ல.","assure5_b":"நம்பகமான அனுபவம்","assure5_p":"நாடு முழுவதும் கட்டுமான மற்றும் தொழில்துறை திட்டங்களில் நிரூபிக்கப்பட்டது.","proc_lbl":"04 / செயல்முறை","proc_h2":"விசாரணையிலிருந்து தூக்குதல் வரை நான்கு படிகளில்","proc1_h4":"உங்கள் சுமையைச் சொல்லுங்கள்","proc1_p":"எடை, சுற்றளவு, தள அணுகல், தேதிகள். படிவத்தில் இரண்டு நிமிடங்கள் அல்லது ஒரு அழைப்பு.","proc2_h4":"தள மதிப்பீடு","proc2_p":"நாங்கள் நேரில் வருகை தருகிறோம் அல்லது உங்கள் வரைபடங்களை பரிசீலித்து, சரியான இயந்திரத்தையும் கயிறு அமைப்பு திட்டத்தையும் உறுதி செய்கிறோம்.","proc3_h4":"எழுத்துப்பூர்வ மேற்கோள்","proc3_p":"நிலையான வரம்பு, வருகைச் செலவு, இயக்குநர் மற்றும் காப்பீடு — எதிர்பாராத கட்டணங்கள் இல்லை.","proc4_h4":"தூக்குதல் நிறைவேற்றப்பட்டது","proc4_p":"சான்றிதழ் பெற்ற குழு தளத்தில், அனுமதிகள் ஒழுங்காக, நிறைவு ஆவணப்படுத்தப்பட்டது.","proj_lbl":"05 / திட்டங்கள்","proj_h2":"வெறும் படங்கள் அல்ல, சான்று","proj_lead":"எங்கள் பணிகளின் சமீபத்திய காட்சிகள் மற்றும் புதுப்பிப்புகளுக்கு Instagram-ல் <a class=\"ig\" href=\"https://www.instagram.com/aeroliftmachinerymy/\" target=\"_blank\" rel=\"noopener\">@aeroliftmachinerymy</a> ஐப் பின்தொடருங்கள்!","about_lbl":"06 / நிறுவனம்","about_h2":"கடின உழைப்பு மற்றும் விடாமுயற்சியான சிறப்பின் மேல் கட்டப்பட்டது","about_p1":"Aerolift Machinery Sdn Bhd ஒரு சிறிய கிரேன் வாடகை நிறுவனமாக தொடங்கி, இப்போது மலேசியா முழுவதும் கட்டுமான மற்றும் தொழில்துறை திட்டங்களுக்கு சேவை செய்யும் இயந்திர தூக்குதல் நிறுவனமாக வளர்ந்துள்ளது.","about_p2":"எங்கள் பணியாளர்கள் அந்த வெற்றியின் அடித்தளம் — தொடர்ச்சியான பயிற்சி, வழிகாட்டல், மற்றும் நம்பிக்கை, திறந்த தொடர்பு மற்றும் மரியாதையின் மீது கட்டப்பட்ட பண்பாட்டால் ஆதரிக்கப்படுகிறது.","cred_established":"நிறுவப்பட்டது","cred_registration":"பதிவு எண்","cred_certifications":"சான்றிதழ்கள்","cred_insurance":"காப்பீடு","cred_cert_ph":"DOSH Competency, PMA, CIDB Green Card","cred_ins_ph":"ஆம்","contact_lbl":"07 / விசாரணை","contact_h2":"விரைவில் ஒரு தூக்குதல் உள்ளதா?","quote_h2":"24 மணி நேரத்தில் எழுத்துப்பூர்வ மேற்கோள் பெறவும்","quote_p":"உங்கள் சுமை மற்றும் தளத்தைச் சொல்லுங்கள். இயந்திரம், குழு மற்றும் விலையை எழுத்துப்பூர்வமாக உறுதி செய்வோம் — எதிர்பாராத கட்டணங்கள் இல்லாமல்.","quote_li1":"இலவச தள மதிப்பீடு","quote_li2":"இயக்குநர் &amp; காப்பீடு உள்ளடக்கம்","quote_li3":"நிலையான, விரிவான வரம்பு","quote_wa_label":"எங்களை அடைவதற்கான வேகமான வழி WhatsApp:","form_name":"பெயர்","form_company":"நிறுவனம்","form_phone":"தொலைபேசி","form_email":"மின்னஞ்சல்","form_equipment":"உபகரணம்","form_opt1":"மொபைல் கிரேன் — 25–50 T","form_opt2":"மொபைல் கிரேன் — 50–150 T","form_opt3":"மொபைல் கிரேன் — 150–300 T","form_opt4":"மொபைல் கிரேன் — 300–500 T","form_opt5":"ஸ்கைலிஃப்ட் — 20–55 m","form_opt6":"உறுதியாக தெரியவில்லை — பரிந்துரை செய்யவும்","form_date":"தேவையான தேதி","form_submit":"விசாரணையை அனுப்பவும் →","cta_h2a":"அல்லது எங்களை","cta_h2b":"WhatsApp-ல் தொடர்பு கொள்ளுங்கள்.","cta_p":"Shirley மற்றும் Andrew இருவரும் பதிலளிப்பார்கள்.","footer_reg_label":"நிறுவன பதிவு எண்","footer_blurb":"JKKP/DOSH பதிவுசெய்யப்பட்ட திறமையான இயக்குநர்களுடன் மொபைல் கிரேன் மற்றும் ஸ்கைலிஃப்ட் வாடகை, கோலாலம்பூர், செலாங்கூர் மற்றும் நாடு முழுவதும் சேவை. 2013 முதல் இயங்கி வருகிறது.","footer_h5_services":"சேவைகள்","footer_h5_company":"நிறுவனம்","footer_h5_contact":"தொடர்பு","footer_link_mobile":"மொபைல் கிரேன் வாடகை","footer_link_skylift":"ஸ்கைலிஃப்ட் &amp; அணுகல்","footer_link_site":"தள மதிப்பீடு","footer_link_lift":"தூக்கல் திட்டமிடல்","footer_link_about":"எங்களைப் பற்றி","footer_link_projects":"திட்டங்கள்","footer_link_careers":"வேலைவாய்ப்புகள்","footer_link_contact":"தொடர்பு","footer_rights":"அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.","footer_privacy":"தனியுரிமை","footer_terms":"விதிமுறைகள்","footer_sitemap":"தள வரைபடம்","mbar_quote":"மேற்கோள் பெறவும்","form_opt_choose":"— தேர்ந்தெடுக்கவும் —","form_assess":"தள மதிப்பீடு","form_assess_needed":"தேவை","form_assess_not":"தேவையில்லை","form_location":"தள இருப்பிடம்","form_location_ph":"எ.கா. Jalan Ampang, Kuala Lumpur","form_load":"சுமை விவரங்கள்","form_load_ph":"எதைத் தூக்க வேண்டும்? எடை, அளவுகள், எண்ணிக்கை…","form_site":"தள விவரங்கள்","form_site_ph":"அணுகல், நிலவமைப்பு, தடைகள், பணி நேரம்…","form_preview_title":"விசாரணை முன்னோட்டம்","form_preview_hint":"WhatsApp வழியாக அனுப்பப்படும் செய்தி இதுவே.","form_preview_empty":"* குறியிடப்பட்ட புலங்களை நிரப்பினால், உங்கள் விசாரணை செய்தி இங்கே தோன்றும்.","form_missing":"இன்னும் தேவை:","form_ready":"உங்கள் விசாரணை தயார் — அனுப்ப வேண்டியவர்:","form_wa_shirley":"WhatsApp Shirley","form_wa_andrew":"WhatsApp Andrew","prev_intro":"வணக்கம் Aerolift, எனக்கு ஒரு மேற்கோள் தேவை.","prev_name":"பெயர்","prev_company":"நிறுவனம்","prev_phone":"தொலைபேசி","prev_email":"மின்னஞ்சல்","prev_equipment":"தேவையான உபகரணம்","prev_date":"தேவையான தேதி","prev_location":"தள இருப்பிடம்","prev_load":"சுமை விவரங்கள்","prev_site":"தள விவரங்கள்","prev_assess":"தள மதிப்பீடு","prev_thanks":"நன்றி.","legal_lang_note":"இந்த ஆவணம் ஆங்கிலத்தில் வழங்கப்படுகிறது. ஆங்கிலப் பதிப்பே அதிகாரப்பூர்வமானது.","car_title":"எங்கள் குழுவில் இணையுங்கள்","car_intro":"உங்களைப் பற்றிச் சிறிது சொல்லுங்கள், நாங்கள் தொடர்பு கொள்கிறோம். * குறியிட்ட புலங்கள் கட்டாயம்.","car_position":"விண்ணப்பிக்கும் பதவி","car_pos_engineer":"பொறியாளர்","car_pos_mechanic":"இயந்திர பணியாளர்","car_pos_store":"கிடங்கு உதவியாளர்","car_pos_crane":"மொபைல் கிரேன் இயக்குநர்","car_pos_skylift":"ஸ்கைலிஃப்ட் இயக்குநர்","car_pos_other":"மற்றவை","car_other_label":"தயவுசெய்து குறிப்பிடவும்","car_other_ph":"எந்தப் பதவிக்கு விண்ணப்பிக்கிறீர்கள்?","car_name":"முழுப் பெயர்","car_phone":"தொடர்பு எண்","car_email":"மின்னஞ்சல்","car_location":"நீங்கள் எங்கு வசிக்கிறீர்கள்?","car_location_ph":"எ.கா. Seri Kembangan, Selangor","car_years":"அனுபவ ஆண்டுகள்","car_yr_none":"அனுபவம் இல்லை","car_yr_lt1":"1 ஆண்டுக்கும் குறைவு","car_yr_1_3":"1 – 3 ஆண்டுகள்","car_yr_3_5":"3 – 5 ஆண்டுகள்","car_yr_5p":"5 ஆண்டுகளுக்கு மேல்","car_certs":"உரிமங்கள் &amp; சான்றிதழ்கள்","car_certs_ph":"எ.கா. JKKP/DOSH தகுதி, ஓட்டுநர் உரிம வகை","car_exp":"முந்தைய பணி அனுபவம்","car_exp_ph":"இத்துறையில் உங்கள் முந்தைய பணி அனுபவத்தைக் கூறுங்கள். இல்லையெனில் N/A எனக் குறிப்பிடவும்.","car_preview_title":"விண்ணப்ப முன்னோட்டம்","car_preview_empty":"* குறியிட்ட புலங்களை நிரப்பினால், உங்கள் விண்ணப்பம் இங்கே தோன்றும்.","car_ready":"உங்கள் விண்ணப்பம் தயார் — அனுப்ப வேண்டியவர்:","car_submit":"விண்ணப்பத்தை அனுப்பவும் →","cprev_intro":"வணக்கம் Aerolift, நான் ஒரு பதவிக்கு விண்ணப்பிக்க விரும்புகிறேன்.","cprev_position":"விண்ணப்பிக்கும் பதவி","cprev_name":"பெயர்","cprev_phone":"தொடர்பு எண்","cprev_email":"மின்னஞ்சல்","cprev_location":"வசிக்கும் இடம்","cprev_years":"அனுபவ ஆண்டுகள்","cprev_certs":"உரிமங்கள் மற்றும் சான்றிதழ்கள்","cprev_exp":"முந்தைய பணி அனுபவம்","cprev_thanks":"உங்கள் பரிசீலனைக்கு நன்றி.","footer_follow":"எங்களைப் பின்தொடருங்கள்","footer_more":"எங்களை இங்கே காணலாம்"}}</script>
+<script id="i18n-data" type="application/json">{"en":{"util_contact":"Contact","hours_text":"Mon–Fri, 9:00 AM – 5:00 PM","nav_home":"Home","nav_services":"Services","nav_fleet":"Fleet","nav_projects":"Projects","nav_about":"About","nav_contact":"Contact","nav_cta":"Get a quote →","hero_eyebrow":"Mobile crane &amp; skylift hire · KL · Selangor","hero_h1b":"tonne lifts,","hero_h1c":"done right.","hero_p":"JKKP/DOSH-registered competent operators, certified and inspected equipment, and same-day site assessment for construction and industrial projects across Malaysia.","hero_cta1":"Get a quote in 24 hours →","hero_cta2":"View fleet","strip1":"Mobile crane capacity","strip2":"Skylift working height","strip3":"JKKP/DOSH operators","strip4":"Operating since","svc_lbl":"01 / Services","svc_h2":"Four ways we get your load off the ground","svc_lead":"Beyond rental. We assess the site, engineer the lift, and put a certified crew on it.","svc1_h3":"Mobile crane rental","svc1_p":"Road-mobile lifting from light urban jobs to heavy plant and infrastructure work. Fast mobilisation across KL and Selangor, competent operator included.","svc1_link":"See capacities →","svc2_h3":"Skylift &amp; access platform","svc2_p":"Safe working-at-height access for installation, maintenance and inspection — indoor and outdoor, on paved and rough ground.","svc2_link":"See working heights →","svc3_cap":"Free","svc3_h3":"Site assessment","svc3_p":"We visit the site and check access, ground conditions, radius and obstructions, then confirm which machine fits the job. No charge, no obligation.","svc3_link":"Book an assessment →","svc4_cap":"Quoted separately","svc4_h3":"Lift planning","svc4_p":"Engineered lift plans, rigging studies and load charts for complex or critical lifts. Priced on the complexity of the project — quoted before any work begins.","svc4_link":"Discuss your lift →","fleet_lbl":"02 / Fleet","fleet_h2":"Know what you're booking","fleet_lead":"Buyers filter by tonnage before they ever call. These are the capacity bands we cover — tell us the load and we'll confirm the exact machine.","fleet1_ty":"Mobile / all-terrain","fleet1_p":"Urban sites, tight access, short-duration lifts and general construction.","fleet1_st":"Available Upon Request","fleet2_ty":"Mobile / rough terrain","fleet2_p":"Structural steel, precast panels, plant installation and positioning.","fleet2_st":"Available Upon Request","fleet3_ty":"Mobile / all-terrain","fleet3_p":"Heavy plant, tower crane erection and dismantling, infrastructure.","fleet3_st":"Available — Subject to Site Assessment &amp; Confirmation","fleet4_ty":"Heavy-lift mobile","fleet4_p":"Major infrastructure, refinery, power and industrial plant programmes.","fleet4_st":"On Request","fleet5_ty":"Skylift / access platform","fleet5_p":"Working at height for M&amp;E installation, façade work, signage, warehouse and plant maintenance — 20 to 55 metres of working height, indoor and outdoor.","fleet5_st":"Available across the range","fleet_note":"Need something outside these bands? We source through a vetted partner network —","fleet_note_link":"tell us the load","assure_lbl":"04 / Assurance","assure_h2":"Every lift, to the same standard","assure1_b":"Competent operators","assure1_p":"JKKP/DOSH-registered competent crane operators on every lift.","assure2_b":"Qualified personnel","assure2_p":"Experienced riggers and signalmen who have run the job before.","assure3_b":"Certified equipment","assure3_p":"Machines certified and inspected to schedule, records on file.","assure4_b":"Safety-focused","assure4_p":"Lifting operations planned, briefed and supervised — not improvised.","assure5_b":"Trusted experience","assure5_p":"Proven across construction and industrial projects nationwide.","proc_lbl":"05 / Process","proc_h2":"From enquiry to lift in four steps","proc1_h4":"Tell us the load","proc1_p":"Weight, radius, site access, dates. Two minutes on the form or one call.","proc2_h4":"Site assessment","proc2_p":"We visit or review your drawings and confirm the right machine and rigging plan.","proc3_h4":"Written quote","proc3_p":"Fixed scope, mobilisation, operator and insurance — no surprise line items.","proc4_h4":"Lift executed","proc4_p":"Certified crew on site, permits in order, documented completion.","proj_lbl":"06 / Projects","proj_h2":"Proof, not just pictures","proj_lead":"Follow us on Instagram <a class=\"ig\" href=\"https://www.instagram.com/aeroliftmachinerymy/\" target=\"_blank\" rel=\"noopener\">@aeroliftmachinerymy</a> for more up-to-date showcase and updates on our work!","about_lbl":"07 / Company","about_h2":"Built on hard work and a relentless pursuit of excellence","about_p1":"Aerolift Machinery Sdn Bhd began as a small crane rental company and has grown into a mechanical lifting enterprise serving construction and industrial projects across Malaysia.","about_p2":"Our people are the foundation of that success — supported by continuous training, mentorship, and a culture built on trust, open communication and respect.","cred_established":"Established","cred_registration":"Registration","cred_certifications":"Certifications","cred_insurance":"Insurance","cred_cert_ph":"DOSH Competency, PMA, CIDB Green Card","cred_ins_ph":"Yes","contact_lbl":"08 / Enquiry","contact_h2":"Have a lift coming up?","quote_h2":"Get a written quote in 24 hours","quote_p":"Tell us the load and the site. We'll confirm the machine, the crew and the price — in writing, with no surprise line items.","quote_li1":"Free site assessment","quote_li2":"Operator &amp; insurance included","quote_li3":"Fixed, itemised scope","quote_wa_label":"Fastest way to reach us is WhatsApp:","form_name":"Name","form_company":"Company","form_phone":"Phone","form_email":"Email","form_equipment":"Equipment","form_opt1":"Mobile crane — 25–50 T","form_opt2":"Mobile crane — 50–150 T","form_opt3":"Mobile crane — 150–300 T","form_opt4":"Mobile crane — 300–500 T","form_opt5":"Skylift — 20–55 m","form_opt6":"Not sure — please advise","form_date":"Required date","form_submit":"Send enquiry →","cta_h2a":"Or message us","cta_h2b":"on WhatsApp.","cta_p":"Shirley and Andrew both pick up.","footer_reg_label":"Company Registration No.","footer_blurb":"Mobile crane and skylift rental with JKKP/DOSH-registered competent operators, serving Kuala Lumpur, Selangor and nationwide. Operating since 2013.","footer_h5_services":"Services","footer_h5_company":"Company","footer_h5_contact":"Contact","footer_link_mobile":"Mobile crane rental","footer_link_skylift":"Skylift &amp; access","footer_link_site":"Site assessment","footer_link_lift":"Lift planning","footer_link_about":"About","footer_link_projects":"Projects","footer_link_careers":"Careers","footer_link_contact":"Contact","footer_rights":"All rights reserved.","footer_privacy":"Privacy","footer_terms":"Terms","footer_sitemap":"Sitemap","mbar_quote":"Get a quote","form_opt_choose":"— Please select —","form_assess":"Site assessment","form_assess_needed":"Needed","form_assess_not":"Not needed","form_location":"Site location","form_location_ph":"e.g. Jalan Ampang, Kuala Lumpur","form_load":"Load details","form_load_ph":"What are we lifting? Weight, dimensions, quantity…","form_site":"Site details","form_site_ph":"Access, ground conditions, obstructions, working hours…","form_preview_title":"Enquiry preview","form_preview_hint":"This is exactly what will be sent on WhatsApp.","form_preview_empty":"Complete the fields marked * and your enquiry message will appear here.","form_missing":"Still needed:","form_ready":"Your enquiry is ready — send it to:","form_wa_shirley":"WhatsApp Shirley","form_wa_andrew":"WhatsApp Andrew","prev_intro":"Hi Aerolift, I would like to request a quote.","prev_name":"Name","prev_company":"Company","prev_phone":"Phone","prev_email":"Email","prev_equipment":"Equipment required","prev_date":"Date required","prev_location":"Site location","prev_load":"Load details","prev_site":"Site details","prev_assess":"Site assessment","prev_thanks":"Thank you.","legal_lang_note":"This document is provided in English. The English version is the governing version.","car_title":"Join our team","car_intro":"Tell us a little about yourself and we will be in touch. Fields marked * are required.","car_position":"Position applying for","car_pos_engineer":"Engineer","car_pos_mechanic":"Mechanic","car_pos_store":"Store Helper","car_pos_crane":"Mobile Crane Operator","car_pos_skylift":"Skylift Operator","car_pos_other":"Others","car_other_label":"Please specify","car_other_ph":"Which role are you applying for?","car_name":"Full name","car_phone":"Contact number","car_email":"Email","car_location":"Where are you based?","car_location_ph":"e.g. Seri Kembangan, Selangor","car_years":"Years of experience","car_yr_none":"No experience","car_yr_lt1":"Less than 1 year","car_yr_1_3":"1 – 3 years","car_yr_3_5":"3 – 5 years","car_yr_5p":"More than 5 years","car_certs":"Licences &amp; certifications","car_certs_ph":"e.g. JKKP/DOSH competency, driving licence class","car_exp":"Previous work experience","car_exp_ph":"Tell us about your previous work experience in this field. If none, put N/A.","car_preview_title":"Application preview","car_preview_empty":"Complete the fields marked * and your application will appear here.","car_ready":"Your application is ready — send it to:","car_submit":"Send application →","cprev_intro":"Hi Aerolift, I would like to apply for a position.","cprev_position":"Position applying for","cprev_name":"Name","cprev_phone":"Contact number","cprev_email":"Email","cprev_location":"Based in","cprev_years":"Years of experience","cprev_certs":"Licences and certifications","cprev_exp":"Previous work experience","cprev_thanks":"Thank you for your consideration.","footer_follow":"Follow us on","footer_more":"Find us here","plan_lbl":"03 / Planner","plan_h2":"Work out what you need","plan_lead":"Set your load, how far it has to reach, and how high it has to go. The diagram shows the boom length and angle that geometry demands, and points you at a likely crane class to ask us about.","plan_svg_alt":"Diagram of a mobile crane showing boom angle, working radius and hook height","plan_in_load":"Load weight","plan_in_radius":"Working radius","plan_in_height":"Hook height","plan_out_boom":"Boom length needed","plan_out_angle":"Boom angle","plan_out_moment":"Load moment","plan_class_k":"Likely starting point","plan_dim_r":"Radius","plan_ok":"Workable geometry. Confirm capacity against the load chart.","plan_warn_shallow":"Very shallow boom angle — this reach usually needs a longer boom or a bigger machine.","plan_warn_long":"Long boom — this pushes you into the larger machines, and a jib may be needed too.","plan_warn_steep":"Almost vertical — you may be able to work at a shorter radius.","plan_cta":"Use these figures in an enquiry →","plan_note":"Geometry assumes a boom pivot 1.5 m ahead of the slew centre at 2.2 m height, plus 1.5 m for hook block and slings.","plan_disc_t":"A guide only — not a lift plan or engineering advice","plan_disc_p":"The boom length and angle shown are geometry only. Crane class is indicated from load moment as a starting point; a crane's actual capacity falls sharply as radius increases, and only the manufacturer's load chart for the specific machine is authoritative. <strong>Aerolift Machinery Sdn Bhd accepts no responsibility or liability for any decision made, or action taken, in reliance on this tool.</strong> Always confirm your requirements with our team before planning or booking a lift — <a href=\"#contact\" style=\"color:var(--blue);font-weight:700;text-decoration:underline\">speak to our experts</a> using the contact details below.","plan_prefill":"From the planner","plan_prefill_h":"hook height","plan_prefill_b":"boom","u_t":"t","u_m":"m","sky_tab_crane":"Mobile crane","sky_tab_sky":"Skylift","sky_lead":"Set how high you need to work, how far out you need to reach, and what is going up in the platform. The diagram shows the machine type and working-height class the job demands.","sky_in_height":"Working height","sky_in_reach":"Horizontal outreach","sky_in_load":"Platform load","sky_env":"Environment","sky_env_in":"Indoor","sky_env_out":"Outdoor","sky_acc":"Site access","sky_acc_std":"Standard","sky_acc_narrow":"Narrow / doorway","sky_out_platform":"Platform floor height","sky_out_reach":"Outreach","sky_out_boom":"Minimum boom reach","sky_class_k":"Likely machine","sky_type_scissor":"Scissor lift","sky_type_artic":"Articulating boom lift","sky_type_tele":"Telescopic boom lift","sky_type_spider":"Spider / tracked lift","sky_cls_suffix":"class","sky_ok":"Workable. Confirm the exact machine and platform rating with us.","sky_warn_reach":"Outreach is large for this working height — few machines reach this far out up here. Expect a bigger class.","sky_warn_below":"Below the 20 m range we publish. We may still have a machine — ask us.","sky_warn_above":"At the top of our 55 m range. Confirm availability with us before planning.","sky_warn_load":"Platform load is above a typical two-person rating. This limits machine choice.","sky_warn_narrow":"Narrow access rules out most machines. A spider lift is usually the only type that fits through.","sky_note_indoor":"Indoor: check floor loading, and ask for an electric, non-marking machine.","sky_note_outdoor":"Outdoor: ground bearing and wind speed both limit what can be used safely.","sky_cta":"Use these figures in an enquiry →","sky_note":"Working height is taken as platform floor height plus 2 m — the standard industry allowance for a person's reach.","sky_svg_alt":"Diagram of a skylift showing working height, platform height and horizontal outreach","sky_dim_wh":"Working height","sky_dim_ph":"Platform","sky_dim_or":"Outreach","sky_prefill":"From the skylift selector","sky_prefill_wh":"working height","sky_prefill_or":"outreach","sky_prefill_pl":"platform load","sky_disc_t":"A guide only — not a lift plan or engineering advice","u_kg":"kg","sky_disc_p":"Working height, platform height and outreach shown are geometry only. Machine type is indicated as a starting point; a machine's usable outreach falls as the platform rises, and platform capacity varies by model — only the manufacturer's specification for the specific machine is authoritative. <strong>Aerolift Machinery Sdn Bhd accepts no responsibility or liability for any decision made, or action taken, in reliance on this tool.</strong> Always confirm your requirements with our team before planning or booking — <a href=\"#contact\" style=\"color:var(--blue);font-weight:700;text-decoration:underline\">speak to our experts</a> using the contact details below."},"ms":{"util_contact":"Hubungi","hours_text":"Isnin–Jumaat, 9:00 Pagi – 5:00 Petang","nav_home":"Laman Utama","nav_services":"Perkhidmatan","nav_fleet":"Armada","nav_projects":"Projek","nav_about":"Tentang Kami","nav_contact":"Hubungi","nav_cta":"Dapatkan Sebut Harga →","hero_eyebrow":"Sewaan Kren Mudah Alih &amp; Skylift · KL · Selangor","hero_h1b":"angkatan tan,","hero_h1c":"dibuat dengan betul.","hero_p":"Operator kompeten berdaftar JKKP/DOSH, peralatan bertauliah dan diperiksa, serta penilaian tapak sehari untuk projek pembinaan dan perindustrian di seluruh Malaysia.","hero_cta1":"Dapatkan Sebut Harga Dalam 24 Jam →","hero_cta2":"Lihat Armada","strip1":"Kapasiti kren mudah alih","strip2":"Ketinggian kerja skylift","strip3":"Operator JKKP/DOSH","strip4":"Beroperasi sejak","svc_lbl":"01 / Perkhidmatan","svc_h2":"Empat cara kami mengangkat beban anda","svc_lead":"Bukan sekadar sewaan. Kami menilai tapak, merekayasa angkatan, dan menghantar krew bertauliah.","svc1_h3":"Sewaan Kren Mudah Alih","svc1_p":"Pengangkatan mudah alih di atas jalan raya daripada kerja bandar ringan hingga kerja loji berat dan infrastruktur. Penggerakan pantas di seluruh KL dan Selangor, operator kompeten disertakan.","svc1_link":"Lihat kapasiti →","svc2_h3":"Skylift &amp; Platform Akses","svc2_p":"Akses kerja di ketinggian yang selamat untuk pemasangan, penyelenggaraan dan pemeriksaan — dalam dan luar bangunan, di permukaan turap dan tanah kasar.","svc2_link":"Lihat ketinggian kerja →","svc3_cap":"Percuma","svc3_h3":"Penilaian Tapak","svc3_p":"Kami melawat tapak dan menyemak akses, keadaan tanah, jejari dan halangan, kemudian mengesahkan mesin yang sesuai untuk kerja tersebut. Tiada bayaran, tiada obligasi.","svc3_link":"Tempah penilaian →","svc4_cap":"Disebut Harga Berasingan","svc4_h3":"Perancangan Angkatan","svc4_p":"Pelan angkatan direkayasa, kajian rig dan carta beban untuk angkatan kompleks atau kritikal. Dikira berdasarkan kerumitan projek — disebut harga sebelum kerja bermula.","svc4_link":"Bincang angkatan anda →","fleet_lbl":"02 / Armada","fleet_h2":"Ketahui apa yang anda tempah","fleet_lead":"Pembeli menapis mengikut tan sebelum menghubungi kami. Ini adalah jalur kapasiti yang kami sediakan — beritahu kami beban anda dan kami akan sahkan mesin yang tepat.","fleet1_ty":"Mudah alih / semua rupa bumi","fleet1_p":"Tapak bandar, akses sempit, angkatan tempoh pendek dan pembinaan am.","fleet1_st":"Tersedia Atas Permintaan","fleet2_ty":"Mudah alih / rupa bumi kasar","fleet2_p":"Keluli struktur, panel prapasang, pemasangan dan penempatan loji.","fleet2_st":"Tersedia Atas Permintaan","fleet3_ty":"Mudah alih / semua rupa bumi","fleet3_p":"Loji berat, pemasangan dan pembongkaran kren menara, infrastruktur.","fleet3_st":"Tersedia — Tertakluk kepada Penilaian Tapak &amp; Pengesahan","fleet4_ty":"Mudah alih angkatan berat","fleet4_p":"Infrastruktur utama, kilang penapisan, kuasa dan program loji perindustrian.","fleet4_st":"Atas Permintaan","fleet5_ty":"Skylift / platform akses","fleet5_p":"Kerja di ketinggian untuk pemasangan M&amp;E, kerja fasad, papan tanda, gudang dan penyelenggaraan loji — 20 hingga 55 meter ketinggian kerja, dalam dan luar bangunan.","fleet5_st":"Tersedia untuk keseluruhan julat","fleet_note":"Perlukan sesuatu di luar jalur ini? Kami dapatkan melalui rangkaian rakan kongsi yang disahkan —","fleet_note_link":"beritahu kami beban anda","assure_lbl":"04 / Jaminan","assure_h2":"Setiap angkatan, dengan standard yang sama","assure1_b":"Operator kompeten","assure1_p":"Operator kren kompeten berdaftar JKKP/DOSH pada setiap angkatan.","assure2_b":"Kakitangan berkelayakan","assure2_p":"Pemasang rig dan pemberi isyarat berpengalaman yang pernah menjalankan kerja ini.","assure3_b":"Peralatan bertauliah","assure3_p":"Mesin bertauliah dan diperiksa mengikut jadual, rekod disimpan.","assure4_b":"Berfokuskan keselamatan","assure4_p":"Operasi pengangkatan dirancang, ditaklimat dan diselia — bukan secara spontan.","assure5_b":"Pengalaman dipercayai","assure5_p":"Terbukti merentasi projek pembinaan dan perindustrian di seluruh negara.","proc_lbl":"05 / Proses","proc_h2":"Daripada pertanyaan ke angkatan dalam empat langkah","proc1_h4":"Beritahu kami beban anda","proc1_p":"Berat, jejari, akses tapak, tarikh. Dua minit di borang atau satu panggilan.","proc2_h4":"Penilaian tapak","proc2_p":"Kami melawat atau menyemak lukisan anda dan mengesahkan mesin serta pelan rig yang betul.","proc3_h4":"Sebut harga bertulis","proc3_p":"Skop tetap, penggerakan, operator dan insurans — tiada item baris mengejutkan.","proc4_h4":"Angkatan dilaksanakan","proc4_p":"Krew bertauliah di tapak, permit teratur, penyiapan didokumenkan.","proj_lbl":"06 / Projek","proj_h2":"Bukti, bukan sekadar gambar","proj_lead":"Ikuti kami di Instagram <a class=\"ig\" href=\"https://www.instagram.com/aeroliftmachinerymy/\" target=\"_blank\" rel=\"noopener\">@aeroliftmachinerymy</a> untuk paparan terkini dan perkembangan kerja kami!","about_lbl":"07 / Syarikat","about_h2":"Dibina atas kerja keras dan usaha gigih ke arah kecemerlangan","about_p1":"Aerolift Machinery Sdn Bhd bermula sebagai syarikat sewaan kren kecil dan telah berkembang menjadi enterprise pengangkatan mekanikal yang menyediakan perkhidmatan untuk projek pembinaan dan perindustrian di seluruh Malaysia.","about_p2":"Kakitangan kami adalah asas kejayaan itu — disokong oleh latihan berterusan, bimbingan, dan budaya yang dibina atas kepercayaan, komunikasi terbuka dan rasa hormat.","cred_established":"Ditubuhkan","cred_registration":"Pendaftaran","cred_certifications":"Pensijilan","cred_insurance":"Insurans","cred_cert_ph":"DOSH Competency, PMA, CIDB Green Card","cred_ins_ph":"Ya","contact_lbl":"08 / Pertanyaan","contact_h2":"Ada angkatan akan datang?","quote_h2":"Dapatkan sebut harga bertulis dalam 24 jam","quote_p":"Beritahu kami beban dan tapak. Kami akan sahkan mesin, krew dan harga — secara bertulis, tanpa item baris mengejutkan.","quote_li1":"Penilaian tapak percuma","quote_li2":"Operator &amp; insurans disertakan","quote_li3":"Skop tetap dan terperinci","quote_wa_label":"Cara terpantas menghubungi kami ialah WhatsApp:","form_name":"Nama","form_company":"Syarikat","form_phone":"Telefon","form_email":"E-mel","form_equipment":"Peralatan","form_opt1":"Kren mudah alih — 25–50 T","form_opt2":"Kren mudah alih — 50–150 T","form_opt3":"Kren mudah alih — 150–300 T","form_opt4":"Kren mudah alih — 300–500 T","form_opt5":"Skylift — 20–55 m","form_opt6":"Tidak pasti — sila nasihatkan","form_date":"Tarikh diperlukan","form_submit":"Hantar pertanyaan →","cta_h2a":"Atau hubungi kami","cta_h2b":"melalui WhatsApp.","cta_p":"Shirley dan Andrew kedua-duanya akan menjawab.","footer_reg_label":"No. Pendaftaran Syarikat","footer_blurb":"Sewaan kren mudah alih dan skylift dengan operator kompeten berdaftar JKKP/DOSH, menyediakan perkhidmatan di Kuala Lumpur, Selangor dan seluruh negara. Beroperasi sejak 2013.","footer_h5_services":"Perkhidmatan","footer_h5_company":"Syarikat","footer_h5_contact":"Hubungi","footer_link_mobile":"Sewaan kren mudah alih","footer_link_skylift":"Skylift &amp; akses","footer_link_site":"Penilaian tapak","footer_link_lift":"Perancangan angkatan","footer_link_about":"Tentang Kami","footer_link_projects":"Projek","footer_link_careers":"Kerjaya","footer_link_contact":"Hubungi","footer_rights":"Hak cipta terpelihara.","footer_privacy":"Privasi","footer_terms":"Terma","footer_sitemap":"Peta Laman","mbar_quote":"Dapatkan Sebut Harga","form_opt_choose":"— Sila pilih —","form_assess":"Penilaian tapak","form_assess_needed":"Diperlukan","form_assess_not":"Tidak diperlukan","form_location":"Lokasi tapak","form_location_ph":"cth. Jalan Ampang, Kuala Lumpur","form_load":"Butiran beban","form_load_ph":"Apa yang perlu diangkat? Berat, ukuran, kuantiti…","form_site":"Butiran tapak","form_site_ph":"Akses, keadaan tanah, halangan, waktu kerja…","form_preview_title":"Pratonton pertanyaan","form_preview_hint":"Inilah mesej yang akan dihantar melalui WhatsApp.","form_preview_empty":"Lengkapkan ruangan bertanda * dan mesej pertanyaan anda akan dipaparkan di sini.","form_missing":"Masih diperlukan:","form_ready":"Pertanyaan anda sedia — hantar kepada:","form_wa_shirley":"WhatsApp Shirley","form_wa_andrew":"WhatsApp Andrew","prev_intro":"Salam Aerolift, saya ingin memohon sebut harga.","prev_name":"Nama","prev_company":"Syarikat","prev_phone":"Telefon","prev_email":"E-mel","prev_equipment":"Peralatan diperlukan","prev_date":"Tarikh diperlukan","prev_location":"Lokasi tapak","prev_load":"Butiran beban","prev_site":"Butiran tapak","prev_assess":"Penilaian tapak","prev_thanks":"Terima kasih.","legal_lang_note":"Dokumen ini disediakan dalam bahasa Inggeris. Versi bahasa Inggeris adalah versi yang mengikat.","car_title":"Sertai pasukan kami","car_intro":"Beritahu kami sedikit tentang diri anda dan kami akan menghubungi anda. Ruangan bertanda * adalah wajib.","car_position":"Jawatan dipohon","car_pos_engineer":"Jurutera","car_pos_mechanic":"Mekanik","car_pos_store":"Pembantu Stor","car_pos_crane":"Operator Kren Mudah Alih","car_pos_skylift":"Operator Skylift","car_pos_other":"Lain-lain","car_other_label":"Sila nyatakan","car_other_ph":"Jawatan apa yang anda pohon?","car_name":"Nama penuh","car_phone":"Nombor telefon","car_email":"E-mel","car_location":"Anda menetap di mana?","car_location_ph":"cth. Seri Kembangan, Selangor","car_years":"Tahun pengalaman","car_yr_none":"Tiada pengalaman","car_yr_lt1":"Kurang daripada 1 tahun","car_yr_1_3":"1 – 3 tahun","car_yr_3_5":"3 – 5 tahun","car_yr_5p":"Lebih daripada 5 tahun","car_certs":"Lesen &amp; pensijilan","car_certs_ph":"cth. kompetensi JKKP/DOSH, kelas lesen memandu","car_exp":"Pengalaman kerja lepas","car_exp_ph":"Ceritakan pengalaman kerja anda dalam bidang ini. Jika tiada, tulis N/A.","car_preview_title":"Pratonton permohonan","car_preview_empty":"Lengkapkan ruangan bertanda * dan permohonan anda akan dipaparkan di sini.","car_ready":"Permohonan anda sedia — hantar kepada:","car_submit":"Hantar permohonan →","cprev_intro":"Salam Aerolift, saya ingin memohon jawatan.","cprev_position":"Jawatan dipohon","cprev_name":"Nama","cprev_phone":"Nombor telefon","cprev_email":"E-mel","cprev_location":"Menetap di","cprev_years":"Tahun pengalaman","cprev_certs":"Lesen dan pensijilan","cprev_exp":"Pengalaman kerja lepas","cprev_thanks":"Terima kasih atas pertimbangan anda.","footer_follow":"Ikuti kami di","footer_more":"Cari kami di sini","plan_lbl":"03 / Perancang","plan_h2":"Tentukan apa yang anda perlukan","plan_lead":"Tetapkan beban anda, sejauh mana ia perlu dicapai, dan setinggi mana ia perlu diangkat. Rajah menunjukkan panjang dan sudut boom yang diperlukan oleh geometri, serta kelas kren yang mungkin sesuai untuk dibincangkan dengan kami.","plan_svg_alt":"Rajah kren mudah alih menunjukkan sudut boom, jejari kerja dan ketinggian cangkuk","plan_in_load":"Berat beban","plan_in_radius":"Jejari kerja","plan_in_height":"Ketinggian cangkuk","plan_out_boom":"Panjang boom diperlukan","plan_out_angle":"Sudut boom","plan_out_moment":"Momen beban","plan_class_k":"Titik permulaan yang mungkin","plan_dim_r":"Jejari","plan_ok":"Geometri boleh dilaksanakan. Sahkan kapasiti dengan carta beban.","plan_warn_shallow":"Sudut boom terlalu landai — capaian ini biasanya memerlukan boom lebih panjang atau mesin lebih besar.","plan_warn_long":"Boom panjang — ini memerlukan mesin yang lebih besar, dan jib mungkin juga diperlukan.","plan_warn_steep":"Hampir menegak — anda mungkin boleh bekerja pada jejari lebih pendek.","plan_cta":"Guna angka ini dalam pertanyaan →","plan_note":"Geometri menganggap pangsi boom 1.5 m di hadapan pusat putaran pada ketinggian 2.2 m, serta 1.5 m untuk blok cangkuk dan tali sandang.","plan_disc_t":"Panduan sahaja — bukan pelan angkatan atau nasihat kejuruteraan","plan_disc_p":"Panjang dan sudut boom yang ditunjukkan adalah geometri sahaja. Kelas kren ditunjukkan berdasarkan momen beban sebagai titik permulaan; kapasiti sebenar kren menurun mendadak apabila jejari bertambah, dan hanya carta beban pengeluar untuk mesin tersebut yang muktamad. <strong>Aerolift Machinery Sdn Bhd tidak bertanggungjawab dan tidak menanggung sebarang liabiliti atas keputusan yang dibuat, atau tindakan yang diambil, berdasarkan alat ini.</strong> Sentiasa sahkan keperluan anda dengan pasukan kami sebelum merancang atau menempah angkatan — <a href=\"#contact\" style=\"color:var(--blue);font-weight:700;text-decoration:underline\">hubungi pakar kami</a> menggunakan maklumat perhubungan di bawah.","plan_prefill":"Daripada perancang","plan_prefill_h":"ketinggian cangkuk","plan_prefill_b":"boom","u_t":"t","u_m":"m","sky_tab_crane":"Kren bergerak","sky_tab_sky":"Skylift","sky_lead":"Tetapkan ketinggian kerja yang anda perlukan, sejauh mana capaian mendatar diperlukan, dan apa yang akan dibawa naik di dalam platform. Rajah menunjukkan jenis mesin dan kelas ketinggian kerja yang diperlukan oleh kerja itu.","sky_in_height":"Ketinggian kerja","sky_in_reach":"Capaian mendatar","sky_in_load":"Beban platform","sky_env":"Persekitaran","sky_env_in":"Dalam bangunan","sky_env_out":"Luar bangunan","sky_acc":"Akses tapak","sky_acc_std":"Biasa","sky_acc_narrow":"Sempit / pintu","sky_out_platform":"Ketinggian lantai platform","sky_out_reach":"Capaian","sky_out_boom":"Capaian boom minimum","sky_class_k":"Mesin berkemungkinan","sky_type_scissor":"Skylift gunting","sky_type_artic":"Skylift boom berartikulasi","sky_type_tele":"Skylift boom teleskopik","sky_type_spider":"Skylift labah-labah / bertrek","sky_cls_suffix":"kelas","sky_ok":"Boleh dilaksanakan. Sahkan mesin tepat dan kadaran platform dengan kami.","sky_warn_reach":"Capaian terlalu jauh bagi ketinggian kerja ini — sedikit sahaja mesin yang mampu. Jangkakan kelas lebih besar.","sky_warn_below":"Di bawah julat 20 m yang kami siarkan. Kami mungkin masih ada mesin — tanya kami.","sky_warn_above":"Di penghujung julat 55 m kami. Sahkan ketersediaan dengan kami sebelum merancang.","sky_warn_load":"Beban platform melebihi kadaran biasa dua orang. Ini mengehadkan pilihan mesin.","sky_warn_narrow":"Akses sempit menyingkirkan kebanyakan mesin. Skylift labah-labah biasanya satu-satunya yang muat.","sky_note_indoor":"Dalam bangunan: semak beban lantai, dan minta mesin elektrik yang tidak meninggalkan kesan.","sky_note_outdoor":"Luar bangunan: galas tanah dan kelajuan angin kedua-duanya menghadkan apa yang selamat digunakan.","sky_cta":"Guna angka ini dalam pertanyaan →","sky_note":"Ketinggian kerja diambil sebagai ketinggian lantai platform campur 2 m — elaun industri standard bagi jangkauan seseorang.","sky_svg_alt":"Rajah skylift menunjukkan ketinggian kerja, ketinggian platform dan capaian mendatar","sky_dim_wh":"Ketinggian kerja","sky_dim_ph":"Platform","sky_dim_or":"Capaian","sky_prefill":"Daripada pemilih skylift","sky_prefill_wh":"ketinggian kerja","sky_prefill_or":"capaian","sky_prefill_pl":"beban platform","sky_disc_t":"Panduan sahaja — bukan pelan angkat atau nasihat kejuruteraan","u_kg":"kg","sky_disc_p":"Ketinggian kerja, ketinggian platform dan capaian yang ditunjukkan adalah geometri sahaja. Jenis mesin ditunjukkan sebagai titik permulaan; capaian berguna sesebuah mesin berkurangan apabila platform naik, dan kapasiti platform berbeza mengikut model — hanya spesifikasi pengilang bagi mesin tertentu itu yang muktamad. <strong>Aerolift Machinery Sdn Bhd tidak bertanggungjawab atau menanggung sebarang liabiliti atas keputusan yang dibuat, atau tindakan yang diambil, dengan bergantung pada alat ini.</strong> Sentiasa sahkan keperluan anda dengan pasukan kami sebelum merancang atau menempah — <a href=\"#contact\" style=\"color:var(--blue);font-weight:700;text-decoration:underline\">hubungi pakar kami</a> menggunakan maklumat perhubungan di bawah."},"zh":{"util_contact":"联系","hours_text":"周一至周五，上午9:00 – 下午5:00","nav_home":"首页","nav_services":"服务","nav_fleet":"车队","nav_projects":"项目案例","nav_about":"关于我们","nav_contact":"联系我们","nav_cta":"获取报价 →","hero_eyebrow":"移动起重机与高空作业平台租赁 · 吉隆坡 · 雪兰莪","hero_h1b":"吨吊装，","hero_h1c":"一次做对。","hero_p":"持有 JKKP/DOSH 注册资格的熟练操作员，经认证且定期检验的设备，以及针对全马来西亚建筑与工业项目的当日现场评估服务。","hero_cta1":"24小时内获取报价 →","hero_cta2":"查看车队","strip1":"移动起重机载重","strip2":"高空平台作业高度","strip3":"JKKP/DOSH 注册操作员","strip4":"营业时间自","svc_lbl":"01 / 服务","svc_h2":"四种方式助您顺利完成吊装","svc_lead":"不仅仅是租赁。我们评估现场、设计吊装方案，并派遣认证团队执行作业。","svc1_h3":"移动起重机租赁","svc1_p":"从轻型市区作业到重型设备与基础设施工程的道路移动式起重。快速进驻吉隆坡与雪兰莪全境，含熟练操作员。","svc1_link":"查看载重能力 →","svc2_h3":"高空作业平台与登高设备","svc2_p":"为安装、维修与检查作业提供安全的高空作业支持 —— 适用于室内室外、硬化路面与崎岖地面。","svc2_link":"查看作业高度 →","svc3_cap":"免费","svc3_h3":"现场评估","svc3_p":"我们实地考察现场，检查进出口、地面情况、作业半径与障碍物，确认适合该作业的机型。不收费，不构成任何义务。","svc3_link":"预约评估 →","svc4_cap":"另行报价","svc4_h3":"吊装方案设计","svc4_p":"针对复杂或关键吊装作业提供工程化吊装方案、绑扎研究与载荷表。根据项目复杂程度计价 —— 作业开始前先行报价。","svc4_link":"咨询您的吊装需求 →","fleet_lbl":"02 / 车队","fleet_h2":"了解您预订的设备","fleet_lead":"买家在来电前就会按吨位筛选。以下是我们提供的载重区间 —— 告诉我们负载，我们将确认具体机型。","fleet1_ty":"移动式 / 全地形","fleet1_p":"市区现场、狭窄通道、短时作业与一般建筑工程。","fleet1_st":"根据需求可用","fleet2_ty":"移动式 / 越野型","fleet2_p":"钢结构、预制板安装与设备安装定位。","fleet2_st":"根据需求可用","fleet3_ty":"移动式 / 全地形","fleet3_p":"重型设备、塔式起重机安装与拆卸、基础设施工程。","fleet3_st":"可用 —— 需经现场评估与确认","fleet4_ty":"重型移动式起重机","fleet4_p":"重大基础设施、炼油厂、电力与工业厂房项目。","fleet4_st":"需视情况确认","fleet5_ty":"高空作业平台 / 登高设备","fleet5_p":"适用于机电安装、幕墙工程、标牌安装、仓库与设备维护等高空作业 —— 作业高度 20 至 55 米，适用于室内室外。","fleet5_st":"全系列均可用","fleet_note":"需要以上区间以外的设备？我们通过经过审核的合作伙伴网络调度 ——","fleet_note_link":"告诉我们您的负载","assure_lbl":"04 / 保障","assure_h2":"每一次吊装，同一标准","assure1_b":"熟练操作员","assure1_p":"每次吊装均由 JKKP/DOSH 注册资格的熟练起重机操作员执行。","assure2_b":"合格人员","assure2_p":"经验丰富的绑扎工与指挥人员，均处理过相似作业。","assure3_b":"设备经过认证","assure3_p":"机器经认证并按计划定期检验，记录存档可查。","assure4_b":"以安全为先","assure4_p":"吊装作业经过计划、交底与监督 —— 绝不临时起意。","assure5_b":"可信赖的经验","assure5_p":"已在全国建筑与工业项目中得到验证。","proc_lbl":"05 / 流程","proc_h2":"四步完成从咨询到吊装作业","proc1_h4":"告诉我们您的负载","proc1_p":"重量、半径、现场出入与日期。填写表单只需两分钟，或直接来电即可。","proc2_h4":"现场评估","proc2_p":"我们实地考察或审阅您的图纸，确认合适的设备与绑扎方案。","proc3_h4":"书面报价","proc3_p":"固定作业范围、进驻费、操作员与保险 —— 无任何隐藏费用。","proc4_h4":"完成吊装作业","proc4_p":"认证团队到场，许可手续齐全，完工后提供完整文件记录。","proj_lbl":"06 / 项目案例","proj_h2":"用事实说话，而不仅仅是图片","proj_lead":"关注我们的 Instagram <a class=\"ig\" href=\"https://www.instagram.com/aeroliftmachinerymy/\" target=\"_blank\" rel=\"noopener\">@aeroliftmachinerymy</a>，获取更多最新作品展示与工作动态！","about_lbl":"07 / 公司简介","about_h2":"由努力与持续追求卓越所建立","about_p1":"Aerolift Machinery Sdn Bhd 创业之初只是一家小型起重机租赁公司，如今已发展成为面向马来西亚建筑与工业项目的机械吊装企业。","about_p2":"我们的团队是这一成功的基石 —— 依靠持续培训、导师制，以及基于信任、坦诚沟通与尊重的企业文化。","cred_established":"创立于","cred_registration":"注册号","cred_certifications":"认证","cred_insurance":"保险","cred_cert_ph":"DOSH Competency, PMA, CIDB Green Card","cred_ins_ph":"是","contact_lbl":"08 / 咨询","contact_h2":"有吊装需求？","quote_h2":"24小时内获取书面报价","quote_p":"告诉我们负载与现场情况。我们将以书面形式确认设备、团队与价格 —— 无任何隐藏费用。","quote_li1":"免费现场评估","quote_li2":"包含操作员与保险","quote_li3":"固定且明细的作业范围","quote_wa_label":"最快联系我们的方式是 WhatsApp：","form_name":"姓名","form_company":"公司","form_phone":"电话","form_email":"电子邮箱","form_equipment":"所需设备","form_opt1":"移动起重机 — 25–50 吨","form_opt2":"移动起重机 — 50–150 吨","form_opt3":"移动起重机 — 150–300 吨","form_opt4":"移动起重机 — 300–500 吨","form_opt5":"高空作业平台 — 20–55 米","form_opt6":"不确定 — 请为我推荐","form_date":"需求日期","form_submit":"提交咨询 →","cta_h2a":"或通过","cta_h2b":"WhatsApp 联系我们。","cta_p":"Shirley 与 Andrew 均会为您接听。","footer_reg_label":"公司注册号","footer_blurb":"提供移动起重机与高空作业平台租赁服务，配备 JKKP/DOSH 注册资格的熟练操作员，服务覆盖吉隆坡、雪兰莪与全国各地。自2013年营业。","footer_h5_services":"服务","footer_h5_company":"公司","footer_h5_contact":"联系我们","footer_link_mobile":"移动起重机租赁","footer_link_skylift":"高空作业平台","footer_link_site":"现场评估","footer_link_lift":"吊装方案设计","footer_link_about":"关于我们","footer_link_projects":"项目案例","footer_link_careers":"职业机会","footer_link_contact":"联系我们","footer_rights":"保留所有权利。","footer_privacy":"隐私政策","footer_terms":"使用条款","footer_sitemap":"网站地图","mbar_quote":"获取报价","form_opt_choose":"— 请选择 —","form_assess":"现场评估","form_assess_needed":"需要","form_assess_not":"不需要","form_location":"现场地点","form_location_ph":"例如：吉隆坡 Jalan Ampang","form_load":"负载详情","form_load_ph":"需要吊装什么？重量、尺寸、数量……","form_site":"现场详情","form_site_ph":"出入通道、地面情况、障碍物、作业时间……","form_preview_title":"咨询内容预览","form_preview_hint":"以下即为将通过 WhatsApp 发送的内容。","form_preview_empty":"填写标有 * 的必填项，您的咨询内容将显示在此处。","form_missing":"仍需填写：","form_ready":"您的咨询已准备就绪 — 发送给：","form_wa_shirley":"WhatsApp 联系 Shirley","form_wa_andrew":"WhatsApp 联系 Andrew","prev_intro":"您好 Aerolift，我想获取报价。","prev_name":"姓名","prev_company":"公司","prev_phone":"电话","prev_email":"电子邮箱","prev_equipment":"所需设备","prev_date":"需求日期","prev_location":"现场地点","prev_load":"负载详情","prev_site":"现场详情","prev_assess":"现场评估","prev_thanks":"谢谢。","legal_lang_note":"本文件以英文提供，并以英文版本为准。","car_title":"加入我们的团队","car_intro":"请简单介绍您自己，我们会尽快与您联系。标有 * 的为必填项。","car_position":"应聘职位","car_pos_engineer":"工程师","car_pos_mechanic":"机械技工","car_pos_store":"仓库助理","car_pos_crane":"移动起重机操作员","car_pos_skylift":"高空作业平台操作员","car_pos_other":"其他","car_other_label":"请说明","car_other_ph":"您想应聘什么职位？","car_name":"姓名","car_phone":"联络电话","car_email":"电子邮箱","car_location":"您目前居住在哪里？","car_location_ph":"例如：雪兰莪 Seri Kembangan","car_years":"工作年资","car_yr_none":"没有经验","car_yr_lt1":"少于 1 年","car_yr_1_3":"1 – 3 年","car_yr_3_5":"3 – 5 年","car_yr_5p":"5 年以上","car_certs":"执照与证书","car_certs_ph":"例如：JKKP/DOSH 资格证、驾照等级","car_exp":"过往工作经验","car_exp_ph":"请说明您在此领域的过往工作经验。若没有，请填写 N/A。","car_preview_title":"申请内容预览","car_preview_empty":"填写标有 * 的必填项，您的申请内容将显示在此处。","car_ready":"您的申请已准备就绪 — 发送给：","car_submit":"提交申请 →","cprev_intro":"您好 Aerolift，我想应聘贵公司的职位。","cprev_position":"应聘职位","cprev_name":"姓名","cprev_phone":"联络电话","cprev_email":"电子邮箱","cprev_location":"居住地","cprev_years":"工作年资","cprev_certs":"执照与证书","cprev_exp":"过往工作经验","cprev_thanks":"感谢您的考虑。","footer_follow":"关注我们的","footer_more":"在这里找到我们","plan_lbl":"03 / 规划工具","plan_h2":"计算您需要什么","plan_lead":"设定负载重量、所需作业半径与起吊高度。图示会显示几何上所需的臂长与臂角，并为您指出可咨询的起重机级别。","plan_svg_alt":"移动起重机示意图，显示臂角、作业半径与吊钩高度","plan_in_load":"负载重量","plan_in_radius":"作业半径","plan_in_height":"吊钩高度","plan_out_boom":"所需臂长","plan_out_angle":"臂角","plan_out_moment":"负载力矩","plan_class_k":"可能的起点级别","plan_dim_r":"半径","plan_ok":"几何条件可行。请依载荷表确认起重能力。","plan_warn_shallow":"臂角过平 —— 此作业半径通常需要更长的臂或更大的机型。","plan_warn_long":"臂长较大 —— 这将需要更大的机型，可能还需加装副臂。","plan_warn_steep":"接近垂直 —— 您或许可以在更短的半径下作业。","plan_cta":"将这些数据用于咨询 →","plan_note":"几何计算假设臂销位于回转中心前方 1.5 米、高 2.2 米处，另计吊钩与吊索 1.5 米。","plan_disc_t":"仅供参考 —— 并非吊装方案或工程建议","plan_disc_p":"此处显示的臂长与臂角仅为几何计算结果。起重机级别依据负载力矩作初步指引；起重机的实际起重能力会随半径增加而急剧下降，唯一权威依据是该具体机型的原厂载荷表。<strong>对于因使用本工具而作出的任何决定或采取的任何行动，Aerolift Machinery Sdn Bhd 概不承担任何责任或赔偿义务。</strong>在规划或预订吊装作业前，请务必向我们的团队确认您的需求 —— 请使用下方联络方式<a href=\"#contact\" style=\"color:var(--blue);font-weight:700;text-decoration:underline\">咨询我们的专家</a>。","plan_prefill":"来自规划工具","plan_prefill_h":"吊钩高度","plan_prefill_b":"臂长","u_t":"t","u_m":"m","sky_tab_crane":"移动式起重机","sky_tab_sky":"高空作业车","sky_lead":"设定您需要的作业高度、所需的水平伸距，以及平台上要承载的重量。示意图会显示这项作业所需的机型与作业高度等级。","sky_in_height":"作业高度","sky_in_reach":"水平伸距","sky_in_load":"平台载重","sky_env":"作业环境","sky_env_in":"室内","sky_env_out":"室外","sky_acc":"现场通道","sky_acc_std":"标准","sky_acc_narrow":"狭窄／门口","sky_out_platform":"平台底板高度","sky_out_reach":"伸距","sky_out_boom":"最小臂展距","sky_class_k":"可能机型","sky_type_scissor":"剪叉式升降平台","sky_type_artic":"曲臂式高空作业车","sky_type_tele":"直臂式高空作业车","sky_type_spider":"蜘蛛式／履带式升降机","sky_cls_suffix":"等级","sky_ok":"几何可行。请与我们确认具体机型与平台额定载重。","sky_warn_reach":"相对于此作业高度，伸距偏大——能达到的机型很少。预计需要更大等级。","sky_warn_below":"低于我们公布的 20 m 范围。我们可能仍有合适机型——请咨询我们。","sky_warn_above":"已接近我们 55 m 范围的上限。规划前请先向我们确认可供性。","sky_warn_load":"平台载重超出一般两人额定值。这会限制机型选择。","sky_warn_narrow":"狭窄通道排除了大多数机型。蜘蛛式升降机通常是唯一能通过的。","sky_note_indoor":"室内：请核查楼板承载，并要求使用电动、不留痕的机型。","sky_note_outdoor":"室外：地基承载力与风速都会限制可安全使用的机型。","sky_cta":"将这些数据用于询价 →","sky_note":"作业高度按平台底板高度加 2 m 计算——这是行业标准的人员可及高度惯例。","sky_svg_alt":"高空作业车示意图，显示作业高度、平台高度与水平伸距","sky_dim_wh":"作业高度","sky_dim_ph":"平台","sky_dim_or":"伸距","sky_prefill":"来自高空作业车选型器","sky_prefill_wh":"作业高度","sky_prefill_or":"伸距","sky_prefill_pl":"平台载重","sky_disc_t":"仅供参考——非吊装方案或工程建议","u_kg":"kg","sky_disc_p":"图中显示的作业高度、平台高度与伸距仅为几何计算。机型仅作为起点提示；机器的可用伸距会随平台升高而减小，平台额定载重也因型号而异——只有该具体机器的厂家规格才具权威性。<strong>Aerolift Machinery Sdn Bhd 对任何依赖本工具所做出的决定或采取的行动概不承担责任或法律责任。</strong>在规划或预订之前，请务必与我们的团队确认您的需求——请使用下方联系方式<a href=\"#contact\" style=\"color:var(--blue);font-weight:700;text-decoration:underline\">咨询我们的专家</a>。"},"ta":{"util_contact":"தொடர்பு கொள்ளவும்","hours_text":"திங்கள்–வெள்ளி, காலை 9:00 – மாலை 5:00","nav_home":"முகப்பு","nav_services":"சேவைகள்","nav_fleet":"இயந்திரங்கள்","nav_projects":"திட்டங்கள்","nav_about":"எங்களைப் பற்றி","nav_contact":"தொடர்பு","nav_cta":"மேற்கோள் பெறவும் →","hero_eyebrow":"மொபைல் கிரேன் மற்றும் ஸ்கைலிஃப்ட் வாடகை · KL · செலாங்கூர்","hero_h1b":"டன் தூக்கும் பணிகள்,","hero_h1c":"சரியாகச் செய்யப்படுகிறது.","hero_p":"JKKP/DOSH பதிவுசெய்யப்பட்ட திறமையான இயக்குநர்கள், சான்றிதழ் பெற்றதும் பரிசோதிக்கப்பட்டதுமான உபகரணங்கள், மேலும் மலேசியா முழுவதும் கட்டுமான மற்றும் தொழில்துறை திட்டங்களுக்கு அன்றே தள மதிப்பீடு.","hero_cta1":"24 மணி நேரத்தில் மேற்கோள் பெறவும் →","hero_cta2":"இயந்திரங்களைப் பார்க்க","strip1":"மொபைல் கிரேன் திறன்","strip2":"ஸ்கைலிஃப்ட் பணி உயரம்","strip3":"JKKP/DOSH இயக்குநர்கள்","strip4":"இயங்கி வருகிறது","svc_lbl":"01 / சேவைகள்","svc_h2":"உங்கள் சுமையை தூக்குவதற்கான நான்கு வழிகள்","svc_lead":"வெறும் வாடகை மட்டுமல்ல. நாங்கள் தளத்தை மதிப்பீடு செய்து, தூக்கத்தை திட்டமிட்டு, சான்றிதழ் பெற்ற குழுவை அனுப்புகிறோம்.","svc1_h3":"மொபைல் கிரேன் வாடகை","svc1_p":"இலகுவான நகர பணிகளிலிருந்து கனரக உபகரண மற்றும் உள்கட்டமைப்பு பணிகள் வரை சாலை வழி நகரும் தூக்குதல். KL மற்றும் செலாங்கூர் முழுவதும் விரைவான வருகை, திறமையான இயக்குநருடன்.","svc1_link":"திறன்களைப் பார்க்க →","svc2_h3":"ஸ்கைலிஃப்ட் மற்றும் அணுகல் தளம்","svc2_p":"நிறுவல், பராமரிப்பு மற்றும் ஆய்வுக்கான பாதுகாப்பான உயர இட பணி அணுகல் — கட்டிடத்திற்குள்ளும் வெளியேயும், தளப்பாதைகளிலும் கரடுமுரடான நிலத்திலும்.","svc2_link":"பணி உயரங்களைப் பார்க்க →","svc3_cap":"இலவசம்","svc3_h3":"தள மதிப்பீடு","svc3_p":"நாங்கள் தளத்திற்குச் சென்று அணுகல், நிலவமைப்பு, சுற்றளவு மற்றும் தடைகளை சரிபார்த்து, பணிக்கு பொருந்தும் இயந்திரத்தை உறுதி செய்கிறோம். கட்டணமில்லை, கடமையும் இல்லை.","svc3_link":"மதிப்பீட்டை பதிவு செய்யவும் →","svc4_cap":"தனியே மேற்கோள்","svc4_h3":"தூக்கல் திட்டமிடல்","svc4_p":"சிக்கலான அல்லது முக்கியமான தூக்குதல்களுக்கு பொறியியல் தூக்கல் திட்டங்கள், கயிறு அமைப்பு ஆய்வுகள் மற்றும் சுமை அட்டவணைகள். திட்டத்தின் சிக்கல்தன்மையின் அடிப்படையில் விலை நிர்ணயம் — பணி தொடங்கும் முன் மேற்கோள் வழங்கப்படும்.","svc4_link":"உங்கள் தூக்கலைப் பற்றி விவாதிக்க →","fleet_lbl":"02 / இயந்திரங்கள்","fleet_h2":"நீங்கள் முன்பதிவு செய்வதை அறிந்துகொள்ளுங்கள்","fleet_lead":"வாங்குபவர்கள் அழைப்பதற்கு முன்பே எடையின் அடிப்படையில் தேர்வு செய்கிறார்கள். இவை நாங்கள் வழங்கும் திறன் வரம்புகள் — உங்கள் சுமையைச் சொல்லுங்கள், சரியான இயந்திரத்தை உறுதி செய்வோம்.","fleet1_ty":"மொபைல் / அனைத்து நிலப்பரப்பு","fleet1_p":"நகர்ப்புற தளங்கள், குறுகிய அணுகல், குறுகிய கால தூக்குதல்கள் மற்றும் பொது கட்டுமானம்.","fleet1_st":"கோரிக்கையின்படி கிடைக்கும்","fleet2_ty":"மொபைல் / கரடுமுரடான நிலப்பரப்பு","fleet2_p":"கட்டமைப்பு எஃகு, முன்கூட்டியே வார்க்கப்பட்ட பலகைகள், உபகரண நிறுவல் மற்றும் அமைவு.","fleet2_st":"கோரிக்கையின்படி கிடைக்கும்","fleet3_ty":"மொபைல் / அனைத்து நிலப்பரப்பு","fleet3_p":"கனரக உபகரணங்கள், கோபுர கிரேன் நிறுவுதல் மற்றும் அகற்றுதல், உள்கட்டமைப்பு.","fleet3_st":"கிடைக்கும் — தள மதிப்பீடு மற்றும் உறுதிப்படுத்தலுக்கு உட்பட்டது","fleet4_ty":"கனரக தூக்குதல் மொபைல்","fleet4_p":"முக்கிய உள்கட்டமைப்பு, சுத்திகரிப்பு நிலையம், மின்சாரம் மற்றும் தொழில்துறை திட்டங்கள்.","fleet4_st":"கோரிக்கையின் பேரில்","fleet5_ty":"ஸ்கைலிஃப்ட் / அணுகல் தளம்","fleet5_p":"மின் மற்றும் இயந்திர நிறுவல், முகப்பு பணி, அடையாள பலகைகள், கிடங்கு மற்றும் உபகரண பராமரிப்புக்கான உயர இட பணி — 20 முதல் 55 மீட்டர் வரையிலான பணி உயரம், கட்டிடத்திற்குள்ளும் வெளியேயும்.","fleet5_st":"முழு வரம்பிலும் கிடைக்கும்","fleet_note":"இந்த வரம்புகளுக்கு வெளியே ஏதேனும் தேவையா? சரிபார்க்கப்பட்ட கூட்டாளர் வலையமைப்பு மூலம் நாங்கள் பெற்றுத் தருகிறோம் —","fleet_note_link":"உங்கள் சுமையைச் சொல்லுங்கள்","assure_lbl":"04 / உறுதிப்பாடு","assure_h2":"ஒவ்வொரு தூக்குதலும், ஒரே தரத்தில்","assure1_b":"திறமையான இயக்குநர்கள்","assure1_p":"ஒவ்வொரு தூக்குதலிலும் JKKP/DOSH பதிவுசெய்யப்பட்ட திறமையான கிரேன் இயக்குநர்கள்.","assure2_b":"தகுதியான பணியாளர்கள்","assure2_p":"இதே பணியை முன்பே செய்திருந்த அனுபவம் மிக்க கயிறு அமைப்பாளர்களும் சமிக்ஞை பணியாளர்களும்.","assure3_b":"சான்றிதழ் பெற்ற உபகரணங்கள்","assure3_p":"இயந்திரங்கள் சான்றிதழ் பெற்றவை, அட்டவணைப்படி ஆய்வு செய்யப்படுகின்றன, பதிவுகள் பாதுகாக்கப்படுகின்றன.","assure4_b":"பாதுகாப்பை முன்னிறுத்துதல்","assure4_p":"தூக்கும் பணிகள் திட்டமிடப்பட்டு, விளக்கப்பட்டு, மேற்பார்வையிடப்பட்டு நடத்தப்படுகின்றன — திடீரென்று அல்ல.","assure5_b":"நம்பகமான அனுபவம்","assure5_p":"நாடு முழுவதும் கட்டுமான மற்றும் தொழில்துறை திட்டங்களில் நிரூபிக்கப்பட்டது.","proc_lbl":"05 / செயல்முறை","proc_h2":"விசாரணையிலிருந்து தூக்குதல் வரை நான்கு படிகளில்","proc1_h4":"உங்கள் சுமையைச் சொல்லுங்கள்","proc1_p":"எடை, சுற்றளவு, தள அணுகல், தேதிகள். படிவத்தில் இரண்டு நிமிடங்கள் அல்லது ஒரு அழைப்பு.","proc2_h4":"தள மதிப்பீடு","proc2_p":"நாங்கள் நேரில் வருகை தருகிறோம் அல்லது உங்கள் வரைபடங்களை பரிசீலித்து, சரியான இயந்திரத்தையும் கயிறு அமைப்பு திட்டத்தையும் உறுதி செய்கிறோம்.","proc3_h4":"எழுத்துப்பூர்வ மேற்கோள்","proc3_p":"நிலையான வரம்பு, வருகைச் செலவு, இயக்குநர் மற்றும் காப்பீடு — எதிர்பாராத கட்டணங்கள் இல்லை.","proc4_h4":"தூக்குதல் நிறைவேற்றப்பட்டது","proc4_p":"சான்றிதழ் பெற்ற குழு தளத்தில், அனுமதிகள் ஒழுங்காக, நிறைவு ஆவணப்படுத்தப்பட்டது.","proj_lbl":"06 / திட்டங்கள்","proj_h2":"வெறும் படங்கள் அல்ல, சான்று","proj_lead":"எங்கள் பணிகளின் சமீபத்திய காட்சிகள் மற்றும் புதுப்பிப்புகளுக்கு Instagram-ல் <a class=\"ig\" href=\"https://www.instagram.com/aeroliftmachinerymy/\" target=\"_blank\" rel=\"noopener\">@aeroliftmachinerymy</a> ஐப் பின்தொடருங்கள்!","about_lbl":"07 / நிறுவனம்","about_h2":"கடின உழைப்பு மற்றும் விடாமுயற்சியான சிறப்பின் மேல் கட்டப்பட்டது","about_p1":"Aerolift Machinery Sdn Bhd ஒரு சிறிய கிரேன் வாடகை நிறுவனமாக தொடங்கி, இப்போது மலேசியா முழுவதும் கட்டுமான மற்றும் தொழில்துறை திட்டங்களுக்கு சேவை செய்யும் இயந்திர தூக்குதல் நிறுவனமாக வளர்ந்துள்ளது.","about_p2":"எங்கள் பணியாளர்கள் அந்த வெற்றியின் அடித்தளம் — தொடர்ச்சியான பயிற்சி, வழிகாட்டல், மற்றும் நம்பிக்கை, திறந்த தொடர்பு மற்றும் மரியாதையின் மீது கட்டப்பட்ட பண்பாட்டால் ஆதரிக்கப்படுகிறது.","cred_established":"நிறுவப்பட்டது","cred_registration":"பதிவு எண்","cred_certifications":"சான்றிதழ்கள்","cred_insurance":"காப்பீடு","cred_cert_ph":"DOSH Competency, PMA, CIDB Green Card","cred_ins_ph":"ஆம்","contact_lbl":"08 / விசாரணை","contact_h2":"விரைவில் ஒரு தூக்குதல் உள்ளதா?","quote_h2":"24 மணி நேரத்தில் எழுத்துப்பூர்வ மேற்கோள் பெறவும்","quote_p":"உங்கள் சுமை மற்றும் தளத்தைச் சொல்லுங்கள். இயந்திரம், குழு மற்றும் விலையை எழுத்துப்பூர்வமாக உறுதி செய்வோம் — எதிர்பாராத கட்டணங்கள் இல்லாமல்.","quote_li1":"இலவச தள மதிப்பீடு","quote_li2":"இயக்குநர் &amp; காப்பீடு உள்ளடக்கம்","quote_li3":"நிலையான, விரிவான வரம்பு","quote_wa_label":"எங்களை அடைவதற்கான வேகமான வழி WhatsApp:","form_name":"பெயர்","form_company":"நிறுவனம்","form_phone":"தொலைபேசி","form_email":"மின்னஞ்சல்","form_equipment":"உபகரணம்","form_opt1":"மொபைல் கிரேன் — 25–50 T","form_opt2":"மொபைல் கிரேன் — 50–150 T","form_opt3":"மொபைல் கிரேன் — 150–300 T","form_opt4":"மொபைல் கிரேன் — 300–500 T","form_opt5":"ஸ்கைலிஃப்ட் — 20–55 m","form_opt6":"உறுதியாக தெரியவில்லை — பரிந்துரை செய்யவும்","form_date":"தேவையான தேதி","form_submit":"விசாரணையை அனுப்பவும் →","cta_h2a":"அல்லது எங்களை","cta_h2b":"WhatsApp-ல் தொடர்பு கொள்ளுங்கள்.","cta_p":"Shirley மற்றும் Andrew இருவரும் பதிலளிப்பார்கள்.","footer_reg_label":"நிறுவன பதிவு எண்","footer_blurb":"JKKP/DOSH பதிவுசெய்யப்பட்ட திறமையான இயக்குநர்களுடன் மொபைல் கிரேன் மற்றும் ஸ்கைலிஃப்ட் வாடகை, கோலாலம்பூர், செலாங்கூர் மற்றும் நாடு முழுவதும் சேவை. 2013 முதல் இயங்கி வருகிறது.","footer_h5_services":"சேவைகள்","footer_h5_company":"நிறுவனம்","footer_h5_contact":"தொடர்பு","footer_link_mobile":"மொபைல் கிரேன் வாடகை","footer_link_skylift":"ஸ்கைலிஃப்ட் &amp; அணுகல்","footer_link_site":"தள மதிப்பீடு","footer_link_lift":"தூக்கல் திட்டமிடல்","footer_link_about":"எங்களைப் பற்றி","footer_link_projects":"திட்டங்கள்","footer_link_careers":"வேலைவாய்ப்புகள்","footer_link_contact":"தொடர்பு","footer_rights":"அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.","footer_privacy":"தனியுரிமை","footer_terms":"விதிமுறைகள்","footer_sitemap":"தள வரைபடம்","mbar_quote":"மேற்கோள் பெறவும்","form_opt_choose":"— தேர்ந்தெடுக்கவும் —","form_assess":"தள மதிப்பீடு","form_assess_needed":"தேவை","form_assess_not":"தேவையில்லை","form_location":"தள இருப்பிடம்","form_location_ph":"எ.கா. Jalan Ampang, Kuala Lumpur","form_load":"சுமை விவரங்கள்","form_load_ph":"எதைத் தூக்க வேண்டும்? எடை, அளவுகள், எண்ணிக்கை…","form_site":"தள விவரங்கள்","form_site_ph":"அணுகல், நிலவமைப்பு, தடைகள், பணி நேரம்…","form_preview_title":"விசாரணை முன்னோட்டம்","form_preview_hint":"WhatsApp வழியாக அனுப்பப்படும் செய்தி இதுவே.","form_preview_empty":"* குறியிடப்பட்ட புலங்களை நிரப்பினால், உங்கள் விசாரணை செய்தி இங்கே தோன்றும்.","form_missing":"இன்னும் தேவை:","form_ready":"உங்கள் விசாரணை தயார் — அனுப்ப வேண்டியவர்:","form_wa_shirley":"WhatsApp Shirley","form_wa_andrew":"WhatsApp Andrew","prev_intro":"வணக்கம் Aerolift, எனக்கு ஒரு மேற்கோள் தேவை.","prev_name":"பெயர்","prev_company":"நிறுவனம்","prev_phone":"தொலைபேசி","prev_email":"மின்னஞ்சல்","prev_equipment":"தேவையான உபகரணம்","prev_date":"தேவையான தேதி","prev_location":"தள இருப்பிடம்","prev_load":"சுமை விவரங்கள்","prev_site":"தள விவரங்கள்","prev_assess":"தள மதிப்பீடு","prev_thanks":"நன்றி.","legal_lang_note":"இந்த ஆவணம் ஆங்கிலத்தில் வழங்கப்படுகிறது. ஆங்கிலப் பதிப்பே அதிகாரப்பூர்வமானது.","car_title":"எங்கள் குழுவில் இணையுங்கள்","car_intro":"உங்களைப் பற்றிச் சிறிது சொல்லுங்கள், நாங்கள் தொடர்பு கொள்கிறோம். * குறியிட்ட புலங்கள் கட்டாயம்.","car_position":"விண்ணப்பிக்கும் பதவி","car_pos_engineer":"பொறியாளர்","car_pos_mechanic":"இயந்திர பணியாளர்","car_pos_store":"கிடங்கு உதவியாளர்","car_pos_crane":"மொபைல் கிரேன் இயக்குநர்","car_pos_skylift":"ஸ்கைலிஃப்ட் இயக்குநர்","car_pos_other":"மற்றவை","car_other_label":"தயவுசெய்து குறிப்பிடவும்","car_other_ph":"எந்தப் பதவிக்கு விண்ணப்பிக்கிறீர்கள்?","car_name":"முழுப் பெயர்","car_phone":"தொடர்பு எண்","car_email":"மின்னஞ்சல்","car_location":"நீங்கள் எங்கு வசிக்கிறீர்கள்?","car_location_ph":"எ.கா. Seri Kembangan, Selangor","car_years":"அனுபவ ஆண்டுகள்","car_yr_none":"அனுபவம் இல்லை","car_yr_lt1":"1 ஆண்டுக்கும் குறைவு","car_yr_1_3":"1 – 3 ஆண்டுகள்","car_yr_3_5":"3 – 5 ஆண்டுகள்","car_yr_5p":"5 ஆண்டுகளுக்கு மேல்","car_certs":"உரிமங்கள் &amp; சான்றிதழ்கள்","car_certs_ph":"எ.கா. JKKP/DOSH தகுதி, ஓட்டுநர் உரிம வகை","car_exp":"முந்தைய பணி அனுபவம்","car_exp_ph":"இத்துறையில் உங்கள் முந்தைய பணி அனுபவத்தைக் கூறுங்கள். இல்லையெனில் N/A எனக் குறிப்பிடவும்.","car_preview_title":"விண்ணப்ப முன்னோட்டம்","car_preview_empty":"* குறியிட்ட புலங்களை நிரப்பினால், உங்கள் விண்ணப்பம் இங்கே தோன்றும்.","car_ready":"உங்கள் விண்ணப்பம் தயார் — அனுப்ப வேண்டியவர்:","car_submit":"விண்ணப்பத்தை அனுப்பவும் →","cprev_intro":"வணக்கம் Aerolift, நான் ஒரு பதவிக்கு விண்ணப்பிக்க விரும்புகிறேன்.","cprev_position":"விண்ணப்பிக்கும் பதவி","cprev_name":"பெயர்","cprev_phone":"தொடர்பு எண்","cprev_email":"மின்னஞ்சல்","cprev_location":"வசிக்கும் இடம்","cprev_years":"அனுபவ ஆண்டுகள்","cprev_certs":"உரிமங்கள் மற்றும் சான்றிதழ்கள்","cprev_exp":"முந்தைய பணி அனுபவம்","cprev_thanks":"உங்கள் பரிசீலனைக்கு நன்றி.","footer_follow":"எங்களைப் பின்தொடருங்கள்","footer_more":"எங்களை இங்கே காணலாம்","plan_lbl":"03 / திட்டமிடுதல்","plan_h2":"உங்களுக்கு என்ன தேவை என்பதைக் கணக்கிடுங்கள்","plan_lead":"உங்கள் சுமை, அது எவ்வளவு தூரம் எட்ட வேண்டும், எவ்வளவு உயரம் செல்ல வேண்டும் என்பதை அமைக்கவும். வரைபடம் தேவையான பூம் நீளத்தையும் கோணத்தையும் காட்டும், மேலும் எங்களிடம் கேட்க வேண்டிய கிரேன் வகையையும் சுட்டிக்காட்டும்.","plan_svg_alt":"பூம் கோணம், பணி ஆரம் மற்றும் கொக்கி உயரத்தைக் காட்டும் மொபைல் கிரேன் வரைபடம்","plan_in_load":"சுமை எடை","plan_in_radius":"பணி ஆரம்","plan_in_height":"கொக்கி உயரம்","plan_out_boom":"தேவையான பூம் நீளம்","plan_out_angle":"பூம் கோணம்","plan_out_moment":"சுமை திருப்புவிசை","plan_class_k":"சாத்தியமான தொடக்க நிலை","plan_dim_r":"ஆரம்","plan_ok":"செயல்படக்கூடிய வடிவியல். சுமை அட்டவணையுடன் திறனை உறுதிப்படுத்தவும்.","plan_warn_shallow":"பூம் கோணம் மிகத் தட்டையானது — இந்த ஆரத்திற்கு பொதுவாக நீளமான பூம் அல்லது பெரிய இயந்திரம் தேவை.","plan_warn_long":"நீளமான பூம் — இது பெரிய இயந்திரங்களைத் தேவைப்படுத்தும், ஜிப்பும் தேவைப்படலாம்.","plan_warn_steep":"கிட்டத்தட்ட செங்குத்தானது — குறைந்த ஆரத்தில் பணியாற்ற முடியலாம்.","plan_cta":"இந்த எண்களை விசாரணையில் பயன்படுத்தவும் →","plan_note":"வடிவியல் கணக்கீடு: சுழற்சி மையத்திற்கு 1.5 மீ முன்னால், 2.2 மீ உயரத்தில் பூம் முனை, மேலும் கொக்கி மற்றும் கயிறுகளுக்கு 1.5 மீ.","plan_disc_t":"வழிகாட்டி மட்டுமே — தூக்கல் திட்டமோ பொறியியல் ஆலோசனையோ அல்ல","plan_disc_p":"இங்கு காட்டப்படும் பூம் நீளமும் கோணமும் வடிவியல் கணக்கீடு மட்டுமே. கிரேன் வகை சுமை திருப்புவிசையின் அடிப்படையில் ஒரு தொடக்கக் குறிப்பாக மட்டுமே காட்டப்படுகிறது; ஆரம் அதிகரிக்கும்போது கிரேனின் உண்மையான திறன் கூர்மையாகக் குறையும், அதற்கு உரிய அதிகாரம் அந்த இயந்திரத்தின் உற்பத்தியாளர் சுமை அட்டவணை மட்டுமே. <strong>இந்தக் கருவியை நம்பி எடுக்கப்படும் எந்த முடிவுக்கும் அல்லது செயலுக்கும் Aerolift Machinery Sdn Bhd எந்தப் பொறுப்பையும் பொறுப்புக்கடமையையும் ஏற்காது.</strong> தூக்கலைத் திட்டமிடும் அல்லது முன்பதிவு செய்யும் முன், உங்கள் தேவைகளை எப்போதும் எங்கள் குழுவுடன் உறுதிப்படுத்தவும் — கீழே உள்ள தொடர்பு விவரங்களைப் பயன்படுத்தி <a href=\"#contact\" style=\"color:var(--blue);font-weight:700;text-decoration:underline\">எங்கள் நிபுணர்களிடம் பேசுங்கள்</a>.","plan_prefill":"திட்டமிடலில் இருந்து","plan_prefill_h":"கொக்கி உயரம்","plan_prefill_b":"பூம்","u_t":"t","u_m":"m","sky_tab_crane":"நகரும் கிரேன்","sky_tab_sky":"ஸ்கைலிஃப்ட்","sky_lead":"நீங்கள் வேலை செய்ய வேண்டிய உரம், தேவையான கிடைமட்ட நீட்சி, மேடையில் ஏற்றப்படும் எடை ஆகியவற்றை அமைக்கவும். இந்த வேலைக்குத் தேவையான இயந்திர வகையையும் வேலை உர வகுப்பையும் படம் காட்டும்.","sky_in_height":"வேலை உரம்","sky_in_reach":"கிடைமட்ட நீட்சி","sky_in_load":"மேடை சுமை","sky_env":"சூழல்","sky_env_in":"உட்புறம்","sky_env_out":"வெளிப்புறம்","sky_acc":"தள அணுகல்","sky_acc_std":"சாதாரணம்","sky_acc_narrow":"குறுகிய / வாசல்","sky_out_platform":"மேடைத் தள உரம்","sky_out_reach":"நீட்சி","sky_out_boom":"குறைந்தபட்ச பூம் நீட்சி","sky_class_k":"சாத்தியமான இயந்திரம்","sky_type_scissor":"சிசர் லிஃப்ட்","sky_type_artic":"மடங்கும் பூம் லிஃப்ட்","sky_type_tele":"நேரான பூம் லிஃப்ட்","sky_type_spider":"ஸ்பைடர் / டிராக் லிஃப்ட்","sky_cls_suffix":"வகுப்பு","sky_ok":"செயல்படக்கூடியது. சரியான இயந்திரத்தையும் மேடை திறனையும் எங்களிடம் உறுதிப்படுத்தவும்.","sky_warn_reach":"இந்த வேலை உரத்திற்கு நீட்சி அதிகம் — இவ்வளவு தூரம் எட்டும் இயந்திரங்கள் குறைவு. பெரிய வகுப்பு தேவைப்படலாம்.","sky_warn_below":"நாங்கள் அறிவித்த 20 m வரம்பிற்குக் கீழே. எங்களிடம் இயந்திரம் இருக்கலாம் — கேளுங்கள்.","sky_warn_above":"எங்கள் 55 m வரம்பின் உச்சியில். திட்டமிடும் முன் கிடைக்கும் தன்மையை உறுதிப்படுத்தவும்.","sky_warn_load":"மேடை சுமை வழக்கமான இரண்டு நபர் திறனை விட அதிகம். இது இயந்திரத் தேர்வைக் குறைக்கிறது.","sky_warn_narrow":"குறுகிய அணுகல் பெரும்பாலான இயந்திரங்களை விலக்குகிறது. ஸ்பைடர் லிஃப்ட் மட்டுமே பொதுவாகப் பொருந்தும்.","sky_note_indoor":"உட்புறம்: தள சுமையைச் சரிபார்த்து, மின்சார, தடம் விடாத இயந்திரத்தைக் கேளுங்கள்.","sky_note_outdoor":"வெளிப்புறம்: தரை தாங்கும் திறனும் காற்றின் வேகமும் பாதுகாப்பான தேர்வைக் கட்டுப்படுத்துகின்றன.","sky_cta":"இந்த எண்களை விசாரணையில் பயன்படுத்தவும் →","sky_note":"வேலை உரம் = மேடைத் தள உரம் + 2 m — ஒரு நபரின் எட்டும் தூரத்திற்கான தொழில் நியமம்.","sky_svg_alt":"வேலை உரம், மேடை உரம், கிடைமட்ட நீட்சி ஆகியவற்றைக் காட்டும் ஸ்கைலிஃப்ட் படம்","sky_dim_wh":"வேலை உரம்","sky_dim_ph":"மேடை","sky_dim_or":"நீட்சி","sky_prefill":"ஸ்கைலிஃப்ட் தேர்விலிருந்து","sky_prefill_wh":"வேலை உரம்","sky_prefill_or":"நீட்சி","sky_prefill_pl":"மேடை சுமை","sky_disc_t":"வழிகாட்டி மட்டுமே — தூக்குத் திட்டம் அல்ல, பொறியியல் ஆல்லோசனையும் அல்ல","u_kg":"kg","sky_disc_p":"காட்டப்பட்ட வேலை உரம், மேடை உரம் மற்றும் நீட்சி ஆகியவை வடிவகக் கணக்கிடப்பட்டவை மட்டுமே. இயந்திர வகை ஒரு தொடக்கப் புள்ளியாகவே காட்டப்படுகிறது; மேடை உயர உயர இயந்திரத்தின் பயனுள்ள நீட்சி குறைகிறது; மேடையின் சுமைத் திறனும் மாடலுக்கேற்ப மாறுபடுகிறது — அந்தக் குறிப்பிட்ட இயந்திரத்திற்கான உற்பத்தியாளரின் விவரக்குறிப்பு மட்டுமே அதிகாரபூர்வமானது. <strong>இந்தக் கருவியை நம்பி எடுக்கப்படும் எந்த முடிவுக்கும் செயலுக்கும் Aerolift Machinery Sdn Bhd எந்த பொறுப்பையும் ஏற்பதில்லை.</strong> திட்டமிடும் முன்னர் என்றும் எங்கள் குழுவிடம் உறுதிப்படுத்திக்கொள்ளுங்கள் — கீழே உள்ள தொடர்பு விவரங்களைப் பயன்படுத்தி <a href=\"#contact\" style=\"color:var(--blue);font-weight:700;text-decoration:underline\">எங்கள் நிபுணர்களிடம் பேசுங்கள்</a>."}}</script>
 <script>
 (function(){
   try {
@@ -848,6 +1060,11 @@ footer a:hover{color:var(--blue)}
         if (typeof window.__aeroliftRefreshNav === 'function') window.__aeroliftRefreshNav();
       } catch (e) {
         if (window.console && console.error) console.error('Nav underline refresh failed:', e);
+      }
+      try {
+        if (typeof window.__aeroliftRefreshPlanner === 'function') window.__aeroliftRefreshPlanner();
+      } catch (e) {
+        if (window.console && console.error) console.error('Planner redraw failed:', e);
       }
     }
 
@@ -1628,6 +1845,564 @@ footer a:hover{color:var(--blue)}
 
   } catch (err) {
     if (window.console && console.error) console.error('Nav scrollspy failed to initialise:', err);
+  }
+})();
+</script>
+
+
+<script>
+/* Reach planner. Geometry is exact; class suggestion is explicitly indicative.
+   Fully guarded so a failure here cannot affect the rest of the page. */
+(function(){
+  try {
+    var PIVOT_X = 1.5;   // m ahead of slew centre
+    var PIVOT_Y = 2.2;   // m above ground
+    var RIGGING = 1.5;   // m of hook block + slings below the boom tip
+    var LONG_BOOM = 52;  // m — past this you are into the larger machines
+
+    var el = function(id){ return document.getElementById(id); };
+    var load = el('plan-load'), rad = el('plan-rad'), hgt = el('plan-hgt');
+    var g = el('plan-g');
+    if (!load || !rad || !hgt || !g) return;
+
+    function t(key, fallback){
+      try {
+        var lang = document.documentElement.getAttribute('lang') || 'en';
+        var all = window.__AEROLIFT_I18N;
+        if (all) {
+          if (all[lang] && typeof all[lang][key] === 'string') return all[lang][key];
+          if (all.en && typeof all.en[key] === 'string') return all.en[key];
+        }
+      } catch (e) {}
+      return fallback || '';
+    }
+    function num(v, dp){ return (Math.round(v * Math.pow(10,dp)) / Math.pow(10,dp)).toFixed(dp); }
+
+    // --- geometry -----------------------------------------------------------
+    function solve(R, H){
+      var dx = R - PIVOT_X;
+      var dy = (H + RIGGING) - PIVOT_Y;
+      var L  = Math.sqrt(dx*dx + dy*dy);
+      var ang = Math.atan2(dy, dx) * 180 / Math.PI;
+      return { L: L, ang: ang, dx: dx, dy: dy };
+    }
+
+    // --- indicative class from load moment ----------------------------------
+    function band(W, R, L){
+      var m = W * R;                       // tonne-metres
+      var i = m <= 150 ? 0 : m <= 500 ? 1 : m <= 1200 ? 2 : 3;
+      if (L > LONG_BOOM && i < 3) i++;     // a long boom also drives machine size
+      var names = ['25–50 T','50–150 T','150–300 T','300–500 T'];
+      var keys  = ['crane-25-50','crane-50-150','crane-150-300','crane-300-500'];
+      return { moment: m, name: names[i], key: keys[i] };
+    }
+
+    // --- drawing ------------------------------------------------------------
+    var VB_W = 620, VB_H = 556, GROUND = 470, ORIGIN = 92;
+    // Recomputed on every draw. A fixed scale sized for the largest possible job
+    // left ordinary jobs as a tiny sketch in the bottom corner.
+    var SCALE = 7.6;
+    function fitScale(R, H, tipH){
+      var needX = R + 5;
+      var needY = Math.max(H, tipH) + 3;
+      return Math.min((VB_W - ORIGIN - 46) / needX, (GROUND - 34) / needY, 16);
+    }
+    function X(m){ return ORIGIN + m * SCALE; }
+    function Y(m){ return GROUND - m * SCALE; }
+    function svg(tag, attrs, text){
+      var n = document.createElementNS('http://www.w3.org/2000/svg', tag);
+      for (var k in attrs) if (attrs.hasOwnProperty(k)) n.setAttribute(k, attrs[k]);
+      if (text != null) n.textContent = text;
+      return n;
+    }
+
+    function draw(R, H, s){
+      SCALE = fitScale(R, H, PIVOT_Y + s.dy);
+      while (g.firstChild) g.removeChild(g.firstChild);
+      var tipX = X(PIVOT_X + s.dx), tipY = Y(PIVOT_Y + s.dy);
+      var pvX  = X(PIVOT_X),        pvY  = Y(PIVOT_Y);
+
+      // ground
+      g.appendChild(svg('line',{x1:0,y1:GROUND,x2:VB_W,y2:GROUND,stroke:'#101214','stroke-width':3}));
+      for (var i=0;i<VB_W;i+=14)
+        g.appendChild(svg('line',{x1:i,y1:GROUND,x2:i-7,y2:GROUND+9,stroke:'#C6CBD0','stroke-width':2}));
+
+      // slew centre line
+      g.appendChild(svg('line',{x1:X(0),y1:GROUND+14,x2:X(0),y2:Y(6),stroke:'#909AA3',
+        'stroke-width':1.5,'stroke-dasharray':'5 5'}));
+
+      // outriggers, carrier, counterweight
+      g.appendChild(svg('rect',{x:X(-3.2),y:GROUND-5,width:(6.4*SCALE),height:5,fill:'#2A2F34'}));
+      g.appendChild(svg('rect',{x:X(-2.6),y:Y(2.0),width:(5.2*SCALE),height:(1.4*SCALE),
+        fill:'#FFC800',stroke:'#101214','stroke-width':2}));
+      g.appendChild(svg('rect',{x:X(-2.2),y:Y(3.6),width:(2.6*SCALE),height:(1.6*SCALE),
+        fill:'#101214'}));
+
+      // boom
+      g.appendChild(svg('line',{x1:pvX,y1:pvY,x2:tipX,y2:tipY,stroke:'#101214','stroke-width':9,
+        'stroke-linecap':'round'}));
+      g.appendChild(svg('line',{x1:pvX,y1:pvY,x2:tipX,y2:tipY,stroke:'#FFC800','stroke-width':5,
+        'stroke-linecap':'round'}));
+      g.appendChild(svg('circle',{cx:pvX,cy:pvY,r:5,fill:'#101214'}));
+
+      // hoist rope + hook + load
+      g.appendChild(svg('line',{x1:tipX,y1:tipY,x2:tipX,y2:Y(H),stroke:'#101214','stroke-width':2}));
+      g.appendChild(svg('rect',{x:tipX-7,y:Y(H),width:14,height:12,fill:'#101214'}));
+      g.appendChild(svg('rect',{x:tipX-22,y:Y(H)+14,width:44,height:20,
+        fill:'#12459E',stroke:'#101214','stroke-width':2}));
+
+      // radius dimension
+      var dimY = GROUND + 34;
+      g.appendChild(svg('line',{x1:X(0),y1:dimY,x2:tipX,y2:dimY,stroke:'#12459E','stroke-width':2}));
+      [X(0), tipX].forEach(function(px){
+        g.appendChild(svg('line',{x1:px,y1:dimY-6,x2:px,y2:dimY+6,stroke:'#12459E','stroke-width':2}));
+      });
+      var rl = svg('text',{x:(X(0)+tipX)/2,y:dimY+20,'text-anchor':'middle',
+        fill:'#12459E','font-size':15,'font-weight':'700','font-family':'Inter,sans-serif'},
+        t('plan_dim_r','Radius') + ' ' + num(R,1) + ' m');
+      g.appendChild(rl);
+
+      // height dimension
+      var dimX = Math.min(tipX + 46, VB_W - 14);
+      g.appendChild(svg('line',{x1:dimX,y1:GROUND,x2:dimX,y2:Y(H),stroke:'#12459E','stroke-width':2}));
+      [GROUND, Y(H)].forEach(function(py){
+        g.appendChild(svg('line',{x1:dimX-6,y1:py,x2:dimX+6,y2:py,stroke:'#12459E','stroke-width':2}));
+      });
+      var hl = svg('text',{x:dimX-8,y:(GROUND+Y(H))/2,'text-anchor':'end',
+        fill:'#12459E','font-size':15,'font-weight':'700','font-family':'Inter,sans-serif'},
+        num(H,1) + ' m');
+      g.appendChild(hl);
+
+      // angle arc
+      var aR = 46;
+      var a0 = 0, a1 = -s.ang * Math.PI/180;
+      var ax = pvX + aR*Math.cos(a0), ay = pvY + aR*Math.sin(a0);
+      var bx = pvX + aR*Math.cos(a1), by = pvY + aR*Math.sin(a1);
+      g.appendChild(svg('path',{d:'M '+ax+' '+ay+' A '+aR+' '+aR+' 0 0 0 '+bx+' '+by,
+        fill:'none',stroke:'#101214','stroke-width':2}));
+      g.appendChild(svg('text',{x:pvX+aR+10,y:pvY-14,fill:'#101214','font-size':15,
+        'font-weight':'700','font-family':'Inter,sans-serif'}, num(s.ang,0) + '°'));
+    }
+
+    // --- update -------------------------------------------------------------
+    function update(){
+      try {
+        var W = parseFloat(load.value), R = parseFloat(rad.value), H = parseFloat(hgt.value);
+        el('plan-load-v').textContent = num(W,1).replace(/\.0$/,'');
+        el('plan-rad-v').textContent  = num(R,1).replace(/\.0$/,'');
+        el('plan-hgt-v').textContent  = num(H,1).replace(/\.0$/,'');
+
+        var s = solve(R, H);
+        var b = band(W, R, s.L);
+
+        el('plan-boom').textContent   = num(s.L,1) + ' m';
+        el('plan-angle').textContent  = num(s.ang,0) + '°';
+        el('plan-moment').textContent = num(b.moment,0) + ' t·m';
+        el('plan-class').textContent  = b.name;
+
+        var flag = el('plan-flag');
+        flag.className = 'plan-flag';
+        if (s.ang < 20) {
+          flag.textContent = t('plan_warn_shallow','Very shallow boom angle — this reach usually needs a longer boom or a bigger machine.');
+          flag.className = 'plan-flag warn';
+        } else if (s.L > LONG_BOOM) {
+          flag.textContent = t('plan_warn_long','Long boom — this pushes you into the larger machines, and a jib may be needed too.');
+          flag.className = 'plan-flag warn';
+        } else if (s.ang > 82) {
+          flag.textContent = t('plan_warn_steep','Almost vertical — you may be able to work at a shorter radius.');
+          flag.className = 'plan-flag warn';
+        } else {
+          flag.textContent = t('plan_ok','Workable geometry. Confirm capacity against the load chart.');
+        }
+        draw(R, H, s);
+        window.__aeroliftPlanState = { W:W, R:R, H:H, L:s.L, ang:s.ang, band:b };
+      } catch (e) {
+        if (window.console && console.error) console.error('Planner update failed:', e);
+      }
+    }
+
+    [load, rad, hgt].forEach(function(i){
+      i.addEventListener('input', update);
+      i.addEventListener('change', update);
+    });
+
+    // --- hand off into the existing enquiry form -----------------------------
+    var cta = el('plan-cta');
+    if (cta) cta.addEventListener('click', function(){
+      try {
+        var st = window.__aeroliftPlanState;
+        if (!st) return;
+        var svc = el('q-svc'), ld = el('q-load');
+        if (svc) {
+          for (var i=0;i<svc.options.length;i++) {
+            if (svc.options[i].value === st.band.key) { svc.selectedIndex = i; break; }
+          }
+          svc.dispatchEvent(new Event('change', {bubbles:true}));
+        }
+        if (ld) {
+          ld.value = t('plan_prefill','From the planner') + ': ' +
+            num(st.W,1).replace(/\.0$/,'') + ' t, ' +
+            t('plan_dim_r','Radius').toLowerCase() + ' ' + num(st.R,1).replace(/\.0$/,'') + ' m, ' +
+            t('plan_prefill_h','hook height') + ' ' + num(st.H,1).replace(/\.0$/,'') + ' m ' +
+            '(' + t('plan_prefill_b','boom') + ' ~' + num(st.L,1) + ' m @ ' + num(st.ang,0) + '°).';
+          ld.dispatchEvent(new Event('input', {bubbles:true}));
+        }
+        var target = document.getElementById('contact');
+        if (target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+      } catch (e) {
+        if (window.console && console.error) console.error('Planner hand-off failed:', e);
+      }
+    });
+
+    // redraw on language change (labels inside the SVG are translated)
+    window.__aeroliftRefreshPlanner = update;
+    update();
+
+  } catch (err) {
+    if (window.console && console.error) console.error('Planner failed to initialise:', err);
+  }
+})();
+</script>
+
+<script>
+/* Planner tabs + skylift selector. Geometry is exact; machine type and class are
+   explicitly indicative. Fully guarded so a failure cannot affect the rest of the page. */
+(function(){
+  try {
+    var el = function(id){ return document.getElementById(id); };
+    var hgt = el('sky-hgt'), reach = el('sky-reach'), load = el('sky-load'), g = el('sky-g');
+    if (!hgt || !reach || !load || !g) return;
+
+    var PIVOT_Y  = 1.9;   // m — boom pivot / turret height above ground
+    var REACH_UP = 2.0;   // m — industry allowance from platform floor to a person's hands
+    var MIN_PUB  = 20;    // m — bottom of the 20-55 m range Aerolift publishes
+    var MAX_PUB  = 55;    // m — top of it
+
+    var env = 'out', acc = 'std';
+
+    function t(key, fallback){
+      try {
+        var lang = document.documentElement.getAttribute('lang') || 'en';
+        var all = window.__AEROLIFT_I18N;
+        if (all) {
+          if (all[lang] && typeof all[lang][key] === 'string') return all[lang][key];
+          if (all.en && typeof all.en[key] === 'string') return all.en[key];
+        }
+      } catch (e) {}
+      return fallback || '';
+    }
+    function num(v, dp){ return (Math.round(v * Math.pow(10,dp)) / Math.pow(10,dp)).toFixed(dp); }
+    function trim(v, dp){ return num(v, dp).replace(/\.0$/, ''); }
+
+    // --- selection logic ----------------------------------------------------
+    // Scissor lifts are vertical-only; boom lifts trade outreach against height;
+    // a spider lift is the only family that passes through a standard doorway.
+    function pickType(WH, OR){
+      if (acc === 'narrow') return 'spider';
+      if (OR <= 1.5) return (WH <= 18) ? 'scissor' : 'tele';
+      if (WH > 30 || OR > 15) return 'tele';
+      return 'artic';
+    }
+    function pickClass(WH){
+      if (WH < MIN_PUB) return '< 20 m';
+      if (WH <= 30) return '20–30 m';
+      if (WH <= 40) return '30–40 m';
+      return '40–55 m';
+    }
+
+    // --- drawing ------------------------------------------------------------
+    var VB_W = 620, VB_H = 556, GROUND = 470, ORIGIN = 134;
+    var SCALE = 8;
+    // Recomputed every draw. A fixed scale sized for a 55 m machine left an
+    // ordinary 20 m job as a small sketch in the corner of the frame.
+    function fitScale(OR, WH){
+      var byRight = (VB_W - ORIGIN - 80) / Math.max(OR, 1.5);  // room for the height dimension
+      var byLeft  = (ORIGIN - 6) / 4.0;                        // chassis + platform label
+      var byUp    = (GROUND - 34) / Math.max(WH, 1);
+      return Math.max(4, Math.min(byRight, byLeft, byUp, 32));
+    }
+    function X(m){ return ORIGIN + m * SCALE; }
+    function Y(m){ return GROUND - m * SCALE; }
+    function svg(tag, attrs, text){
+      var n = document.createElementNS('http://www.w3.org/2000/svg', tag);
+      for (var k in attrs) if (attrs.hasOwnProperty(k)) n.setAttribute(k, attrs[k]);
+      if (text != null) n.textContent = text;
+      return n;
+    }
+    function add(tag, attrs, text){ g.appendChild(svg(tag, attrs, text)); }
+
+    function draw(WH, OR, type){
+      var platH = Math.max(WH - REACH_UP, 0.3);
+      SCALE = fitScale(OR, WH);
+      while (g.firstChild) g.removeChild(g.firstChild);
+
+      var px = X(OR), py = Y(platH);
+      var pvX = X(0), pvY = Y(PIVOT_Y);
+
+      // ground — drawn well past the frame on both sides so that the horizontal
+      // centring applied at the end of this function cannot expose an end of it
+      add('line', {x1:-420, y1:GROUND, x2:VB_W+420, y2:GROUND, stroke:'#101214', 'stroke-width':3});
+      for (var i = -420; i < VB_W+420; i += 14)
+        add('line', {x1:i, y1:GROUND, x2:i-7, y2:GROUND+9, stroke:'#C6CBD0', 'stroke-width':2});
+
+      // chassis
+      if (type === 'spider') {
+        // splayed outrigger legs + narrow tracks
+        [[-3.0,-1.2],[3.0,1.2]].forEach(function(p){
+          add('line', {x1:X(p[1]), y1:Y(1.5), x2:X(p[0]), y2:GROUND, stroke:'#2A2F34', 'stroke-width':5});
+          add('rect', {x:X(p[0]) - 9, y:GROUND-6, width:18, height:6, fill:'#101214'});
+        });
+        add('rect', {x:X(-1.1), y:Y(0.9), width:(2.2*SCALE), height:(0.9*SCALE), fill:'#2A2F34'});
+      } else if (type === 'scissor') {
+        add('rect', {x:X(-1.5), y:GROUND-7, width:(3.0*SCALE), height:7, fill:'#2A2F34'});
+      } else {
+        add('rect', {x:X(-2.4), y:Y(1.15), width:(4.6*SCALE), height:(0.95*SCALE),
+          fill:'#FFC800', stroke:'#101214', 'stroke-width':2});
+        [-1.7, 1.6].forEach(function(w){
+          add('circle', {cx:X(w), cy:GROUND-7, r:7, fill:'#101214'});
+        });
+        // outriggers down
+        [-2.6, 2.6].forEach(function(o){
+          add('line', {x1:X(o*0.55), y1:Y(1.15), x2:X(o), y2:GROUND-3, stroke:'#2A2F34', 'stroke-width':4});
+        });
+      }
+
+      // boom / mast
+      if (type === 'scissor') {
+        // X-lattice stack straight up
+        var segs = Math.max(3, Math.min(9, Math.round(platH / 1.8)));
+        var sw = 1.0, segH = platH / segs;
+        for (var k = 0; k < segs; k++) {
+          var y0 = Y(k * segH), y1 = Y((k+1) * segH);
+          add('line', {x1:X(-sw), y1:y0, x2:X(sw), y2:y1, stroke:'#101214', 'stroke-width':3.5});
+          add('line', {x1:X(sw), y1:y0, x2:X(-sw), y2:y1, stroke:'#101214', 'stroke-width':3.5});
+        }
+      } else if (type === 'artic') {
+        // riser up, knuckle, then arm out to the platform
+        var kx = X(OR * 0.14), ky = Y(PIVOT_Y + (platH - PIVOT_Y) * 0.72);
+        [['#101214', 9], ['#FFC800', 5]].forEach(function(st){
+          add('line', {x1:pvX, y1:pvY, x2:kx, y2:ky, stroke:st[0], 'stroke-width':st[1], 'stroke-linecap':'round'});
+          add('line', {x1:kx, y1:ky, x2:px, y2:py, stroke:st[0], 'stroke-width':st[1], 'stroke-linecap':'round'});
+        });
+        add('circle', {cx:kx, cy:ky, r:5, fill:'#101214'});
+      } else {
+        // straight telescopic boom
+        [['#101214', 9], ['#FFC800', 5]].forEach(function(st){
+          add('line', {x1:pvX, y1:pvY, x2:px, y2:py, stroke:st[0], 'stroke-width':st[1], 'stroke-linecap':'round'});
+        });
+      }
+      add('circle', {cx:pvX, cy:pvY, r:5, fill:'#101214'});
+
+      // platform basket + person
+      var bw = 46, bh = 22;
+      add('rect', {x:px - bw/2, y:py - bh, width:bw, height:bh, fill:'none',
+        stroke:'#12459E', 'stroke-width':3});
+      add('line', {x1:px - bw/2, y1:py, x2:px + bw/2, y2:py, stroke:'#101214', 'stroke-width':4});
+      add('circle', {cx:px, cy:py - bh - 9, r:5, fill:'#101214'});
+      add('line', {x1:px, y1:py - bh - 4, x2:px, y2:py - 5, stroke:'#101214', 'stroke-width':3});
+
+      // dashed run from platform floor up to working height
+      var wy = Y(WH);
+      add('line', {x1:px, y1:py - bh, x2:px, y2:wy, stroke:'#909AA3', 'stroke-width':1.5,
+        'stroke-dasharray':'4 4'});
+      add('line', {x1:px - 13, y1:wy, x2:px + 13, y2:wy, stroke:'#101214', 'stroke-width':2.5});
+
+      // working-height dimension, right-hand side
+      var dimX = px + 58;
+      add('line', {x1:dimX, y1:GROUND, x2:dimX, y2:wy, stroke:'#12459E', 'stroke-width':2});
+      [GROUND, wy].forEach(function(yy){
+        add('line', {x1:dimX-6, y1:yy, x2:dimX+6, y2:yy, stroke:'#12459E', 'stroke-width':2});
+      });
+      add('text', {x:dimX-9, y:(GROUND+wy)/2 - 9, 'text-anchor':'end', fill:'#12459E',
+        'font-size':14, 'font-weight':'700', 'font-family':'Inter,sans-serif'},
+        t('sky_dim_wh','Working height'));
+      add('text', {x:dimX-9, y:(GROUND+wy)/2 + 9, 'text-anchor':'end', fill:'#12459E',
+        'font-size':15, 'font-weight':'700', 'font-family':'Inter,sans-serif'},
+        trim(WH,1) + ' m');
+
+      // platform-height tick on the left
+      add('line', {x1:X(-3.6), y1:py, x2:px - bw/2, y2:py, stroke:'#909AA3', 'stroke-width':1.5,
+        'stroke-dasharray':'4 4'});
+      add('text', {x:X(-3.8), y:py - 6, 'text-anchor':'start', fill:'#5A636B',
+        'font-size':13, 'font-weight':'700', 'font-family':'Inter,sans-serif'},
+        t('sky_dim_ph','Platform') + ' ' + trim(platH,1) + ' m');
+
+      // outreach dimension along the bottom
+      if (OR > 0.2) {
+        var dy = GROUND + 34;
+        add('line', {x1:X(0), y1:dy, x2:px, y2:dy, stroke:'#12459E', 'stroke-width':2});
+        [X(0), px].forEach(function(xx){
+          add('line', {x1:xx, y1:dy-6, x2:xx, y2:dy+6, stroke:'#12459E', 'stroke-width':2});
+        });
+        add('text', {x:(X(0)+px)/2, y:dy+20, 'text-anchor':'middle', fill:'#12459E',
+          'font-size':15, 'font-weight':'700', 'font-family':'Inter,sans-serif'},
+          t('sky_dim_or','Outreach') + ' ' + trim(OR,1) + ' m');
+      }
+      add('line', {x1:X(0), y1:GROUND+14, x2:X(0), y2:Y(PIVOT_Y+1.5), stroke:'#909AA3',
+        'stroke-width':1.5, 'stroke-dasharray':'5 5'});
+
+      // Centre it. Working height sets the scale, so a tall narrow job otherwise
+      // sat hard against the left edge with most of the frame empty.
+      var cl = X(-4.2), cr = dimX + 8;
+      var dx = (VB_W - (cr - cl)) / 2 - cl;
+      g.setAttribute('transform', 'translate(' + num(dx,1) + ',0)');
+    }
+
+    // --- update -------------------------------------------------------------
+    function update(){
+      try {
+        var WH = parseFloat(hgt.value), OR = parseFloat(reach.value), KG = parseFloat(load.value);
+        if (!isFinite(WH) || !isFinite(OR) || !isFinite(KG)) return;
+        var platH = Math.max(WH - REACH_UP, 0.3);
+        var type  = pickType(WH, OR);
+        var boom  = Math.sqrt(OR*OR + Math.pow(Math.max(platH - PIVOT_Y, 0), 2));
+
+        el('sky-hgt-v').textContent   = trim(WH,1);
+        el('sky-reach-v').textContent = trim(OR,1);
+        el('sky-load-v').textContent  = trim(KG,0);
+
+        el('sky-plat').textContent    = trim(platH,1) + ' m';
+        el('sky-reach-o').textContent = trim(OR,1) + ' m';
+        el('sky-boom').textContent    = trim(boom,1) + ' m';
+
+        var tkey = {scissor:'sky_type_scissor', artic:'sky_type_artic',
+                    tele:'sky_type_tele', spider:'sky_type_spider'}[type];
+        el('sky-type').textContent = t(tkey, type);
+        el('sky-cls').textContent  = pickClass(WH) + ' ' + t('sky_cls_suffix','class');
+
+        var flag = el('sky-flag');
+        flag.className = 'plan-flag';
+        if (acc === 'narrow') {
+          flag.textContent = t('sky_warn_narrow','Narrow access rules out most machines.');
+          flag.className = 'plan-flag warn';
+        } else if (OR > 0.75 * WH && OR > 3) {
+          flag.textContent = t('sky_warn_reach','Outreach is large for this working height.');
+          flag.className = 'plan-flag warn';
+        } else if (KG > 230) {
+          flag.textContent = t('sky_warn_load','Platform load is above a typical two-person rating.');
+          flag.className = 'plan-flag warn';
+        } else if (WH < MIN_PUB) {
+          flag.textContent = t('sky_warn_below','Below the 20 m range we publish.');
+          flag.className = 'plan-flag warn';
+        } else if (WH > MAX_PUB - 3) {
+          flag.textContent = t('sky_warn_above','At the top of our 55 m range.');
+          flag.className = 'plan-flag warn';
+        } else {
+          flag.textContent = t('sky_ok','Workable. Confirm the exact machine with us.');
+        }
+        el('sky-note2').textContent = (env === 'in')
+          ? t('sky_note_indoor','Indoor: check floor loading.')
+          : t('sky_note_outdoor','Outdoor: ground bearing and wind speed apply.');
+
+        draw(WH, OR, type);
+        window.__aeroliftSkyState = {WH:WH, OR:OR, KG:KG, platH:platH, boom:boom,
+                                     type:type, cls:pickClass(WH), env:env, acc:acc};
+      } catch (e) {
+        if (window.console && console.error) console.error('Skylift update failed:', e);
+      }
+    }
+
+    [hgt, reach, load].forEach(function(i){
+      i.addEventListener('input', update);
+      i.addEventListener('change', update);
+    });
+
+    function seg(id, set){
+      var box = el(id);
+      if (!box) return;
+      box.addEventListener('click', function(ev){
+        var b = ev.target.closest ? ev.target.closest('button') : null;
+        if (!b || !box.contains(b)) return;
+        var btns = box.getElementsByTagName('button');
+        for (var i = 0; i < btns.length; i++) btns[i].className = '';
+        b.className = 'is-on';
+        set(b.getAttribute('data-v'));
+        update();
+      });
+    }
+    seg('sky-env', function(v){ env = v; });
+    seg('sky-acc', function(v){ acc = v; });
+
+    // --- hand off into the enquiry form -------------------------------------
+    var cta = el('sky-cta');
+    if (cta) cta.addEventListener('click', function(){
+      try {
+        var st = window.__aeroliftSkyState;
+        if (!st) return;
+        var svc = el('q-svc'), ld = el('q-load');
+        if (svc) {
+          for (var i = 0; i < svc.options.length; i++) {
+            if (svc.options[i].value === 'skylift') { svc.selectedIndex = i; break; }
+          }
+          svc.dispatchEvent(new Event('change', {bubbles:true}));
+        }
+        if (ld) {
+          var tkey = {scissor:'sky_type_scissor', artic:'sky_type_artic',
+                      tele:'sky_type_tele', spider:'sky_type_spider'}[st.type];
+          ld.value = t('sky_prefill','From the skylift selector') + ': ' +
+            t('sky_prefill_wh','working height') + ' ' + trim(st.WH,1) + ' m, ' +
+            t('sky_prefill_or','outreach') + ' ' + trim(st.OR,1) + ' m, ' +
+            t('sky_prefill_pl','platform load') + ' ' + trim(st.KG,0) + ' kg (' +
+            t(tkey, st.type) + ', ' + st.cls + ').';
+          ld.dispatchEvent(new Event('input', {bubbles:true}));
+        }
+        var target = document.getElementById('contact');
+        if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      } catch (e) {
+        if (window.console && console.error) console.error('Skylift hand-off failed:', e);
+      }
+    });
+
+    // --- tabs ---------------------------------------------------------------
+    var tc = el('tab-crane'), ts = el('tab-sky'),
+        pc = el('panel-crane'), ps = el('panel-sky'), lead = el('plan-lead');
+
+    function show(which){
+      var isSky = (which === 'sky');
+      if (pc) pc.hidden = isSky;
+      if (ps) ps.hidden = !isSky;
+      if (tc) { tc.className = isSky ? 'plan-tab' : 'plan-tab is-on';
+                tc.setAttribute('aria-selected', isSky ? 'false' : 'true'); }
+      if (ts) { ts.className = isSky ? 'plan-tab is-on' : 'plan-tab';
+                ts.setAttribute('aria-selected', isSky ? 'true' : 'false'); }
+      if (lead) {
+        lead.removeAttribute('data-i18n');
+        lead.textContent = isSky ? t('sky_lead','') : t('plan_lead','');
+      }
+      window.__aeroliftPlanTab = isSky ? 'sky' : 'crane';
+      if (isSky) update();
+      else if (typeof window.__aeroliftPlannerDraw === 'function') window.__aeroliftPlannerDraw();
+    }
+    if (tc) tc.addEventListener('click', function(){ show('crane'); });
+    if (ts) ts.addEventListener('click', function(){ show('sky'); });
+    [tc, ts].forEach(function(b){
+      if (!b) return;
+      b.addEventListener('keydown', function(ev){
+        if (ev.key === 'ArrowRight' || ev.key === 'ArrowLeft') {
+          ev.preventDefault();
+          var other = (b === tc) ? ts : tc;
+          if (other) { other.focus(); other.click(); }
+        }
+      });
+    });
+
+    // Language switching: refresh this panel too, and keep the lead in step.
+    var prevRefresh = window.__aeroliftRefreshPlanner;
+    window.__aeroliftPlannerDraw = prevRefresh;
+    window.__aeroliftRefreshPlanner = function(){
+      try { if (typeof prevRefresh === 'function') prevRefresh(); } catch (e) {}
+      try { update(); } catch (e) {}
+      try {
+        if (lead) lead.textContent =
+          (window.__aeroliftPlanTab === 'sky') ? t('sky_lead','') : t('plan_lead','');
+      } catch (e) {}
+    };
+
+    show('crane');
+    update();
+
+  } catch (err) {
+    if (window.console && console.error) console.error('Skylift selector failed to initialise:', err);
   }
 })();
 </script>
